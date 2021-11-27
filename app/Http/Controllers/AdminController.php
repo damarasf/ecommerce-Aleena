@@ -90,6 +90,7 @@ class AdminController extends Controller
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
    
         return redirect()->route('admin')->with('success','Password successfully changed');
+        
     }
 
     // Pie chart

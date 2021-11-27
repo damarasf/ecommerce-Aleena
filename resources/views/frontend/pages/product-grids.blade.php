@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || PRODUCT PAGE')
+@section('title','Aleena Byand Store - Product')
 
 @section('main-content')
 	<!-- Breadcrumbs -->
@@ -112,7 +112,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">${{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>
+                                                <p class="price"><del class="text-muted">Rp {{number_format($product->price)}}</del>   Rp{{number_format($org)}}  </p>
                                                 
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
+                                {{-- <div class="single-widget category">
                                     <h3 class="title">Brands</h3>
                                     <ul class="categor-list">
                                         @php
@@ -131,7 +131,7 @@
                                             <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
                                         @endforeach
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <!--/ End Single Widget -->
                         </div>
                     </div>
@@ -145,20 +145,23 @@
                                             <label>Show :</label>
                                             <select class="show" name="show" onchange="this.form.submit();">
                                                 <option value="">Default</option>
-                                                <option value="9" @if(!empty($_GET['show']) && $_GET['show']=='9') selected @endif>09</option>
+                                                <option value="10" @if(!empty($_GET['show']) && $_GET['show']=='10') selected @endif>10</option>
                                                 <option value="15" @if(!empty($_GET['show']) && $_GET['show']=='15') selected @endif>15</option>
-                                                <option value="21" @if(!empty($_GET['show']) && $_GET['show']=='21') selected @endif>21</option>
+                                                <option value="20" @if(!empty($_GET['show']) && $_GET['show']=='25') selected @endif>20</option>
                                                 <option value="30" @if(!empty($_GET['show']) && $_GET['show']=='30') selected @endif>30</option>
                                             </select>
                                         </div>
                                         <div class="single-shorter">
+                                            @php
+                                                $after_discount=($product->price-($product->price*$product->discount)/100);
+                                            @endphp
                                             <label>Sort By :</label>
                                             <select class='sortBy' name='sortBy' onchange="this.form.submit();">
                                                 <option value="">Default</option>
                                                 <option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>Name</option>
                                                 <option value="price" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='price') selected @endif>Price</option>
                                                 <option value="category" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='category') selected @endif>Category</option>
-                                                <option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>Brand</option>
+                                                {{-- <option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>Brand</option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -184,12 +187,12 @@
                                                     <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                     <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                     @if($product->discount)
-                                                                <span class="price-dec">{{$product->discount}} % Off</span>
+                                                            <span class="price-dec">{{$product->discount}}% Off</span>
                                                     @endif
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
                                                         <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" class="wishlist" data-id="{{$product->id}}"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                     </div>
                                                     <div class="product-action-2">
@@ -198,12 +201,49 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                <h3 style="font-size: 13pt"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                <div class="quickview-ratting-review">
+                                                    <div class="quickview-ratting-wrap">
+                                                        <div class="quickview-ratting">
+                                                            {{-- <i class="yellow fa fa-star"></i>
+                                                            <i class="yellow fa fa-star"></i>
+                                                            <i class="yellow fa fa-star"></i>
+                                                            <i class="yellow fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> --}}
+                                                            @php
+                                                                $rate=DB::table('product_reviews')->where('product_id',$product->id)->avg('rate');
+                                                                $rate_count=DB::table('product_reviews')->where('product_id',$product->id)->count();
+                                                            @endphp
+                                                            <div class="rating">
+                                                                @php
+                                                                    $rate=ceil($product->getReview->avg('rate'))
+                                                                @endphp
+                                                                    @for($i=1; $i<=5; $i++)
+                                                                        @if($rate>=$i)
+                                                                            <i class="fa fa-star" style="color: orange"></i>
+                                                                        @else
+                                                                            <i class="fa fa-star-o" style="color: orange" ></i>
+                                                                        @endif
+                                                                    @endfor
+                                                            </div>
+                                                        </div>
+                                                        {{-- <a href="#"> ({{$rate_count}} customer review)</a> --}}
+                                                    </div>
+                                                    {{-- <div class="quickview-stock">
+                                                        @if($product->stock >0)
+                                                        <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
+                                                        @else
+                                                        <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+                                                        @endif
+                                                    </div> --}}
+                                                </div>
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
+                                                <span><b>Rp {{number_format($after_discount)}}</b></span>
+                                                @if($product->discount>0)
+                                                    <del class="old" style="font-size: 10pt; padding-left:2%">Rp {{number_format($product->price)}}</del>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -295,12 +335,12 @@
                                             @php
                                                 $after_discount=($product->price-($product->price*$product->discount)/100);
                                             @endphp
-                                            <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                            <h3>Rp {{number_format($after_discount)}}&ensp;<small><del class="text-muted">Rp {{number_format($product->price)}}</del></small></h3>
                                             <div class="quickview-peragraph">
                                                 <p>{!! html_entity_decode($product->summary) !!}</p>
                                             </div>
                                             @if($product->size)
-                                                <div class="size">
+                                                {{-- <div class="size">
                                                     <h4>Size</h4>
                                                     <ul>
                                                         @php 
@@ -311,7 +351,7 @@
                                                         <li><a href="#" class="one">{{$size}}</a></li>
                                                         @endforeach
                                                     </ul>
-                                                </div>
+                                                </div> --}}
                                             @endif
                                             <div class="size">
                                                 <div class="row">

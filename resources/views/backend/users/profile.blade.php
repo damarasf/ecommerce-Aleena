@@ -55,11 +55,11 @@
                       </div>
               
                       <div class="form-group">
-                      <label for="inputPhoto" class="col-form-label">Photo</label>
-                      <div class="input-group">
-                          <span class="input-group-btn">
-                              <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                              <i class="fa fa-picture-o"></i> Choose
+                        <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+                                <i class="fas fa-image"></i> Choose
                               </a>
                           </span>
                           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$profile->photo}}">
@@ -68,7 +68,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                           <label for="role" class="col-form-label">Role</label>
                           <select name="role" class="form-control">
                               <option value="">-----Select Role-----</option>
@@ -78,9 +78,9 @@
                         @error('role')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
-                        </div>
+                        </div> --}}
 
-                        <button type="submit" class="btn btn-success btn-sm">Update</button>
+                        <button type="submit" class="btn btn-success btn-sm" style="margin-top: 12px;">Update</button>
                 </form>
             </div>
         </div>
@@ -107,7 +107,7 @@
       content:"/\00a0";
     }
     .image{
-        background:url('{{asset('backend/img/background.jpg')}}');
+        background:url('{{asset('backend/img/thumbnail-default.jpg')}}');
         height:150px;
         background-position:center;
         background-attachment:cover;

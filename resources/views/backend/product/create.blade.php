@@ -33,7 +33,7 @@
 
 
         <div class="form-group">
-          <label for="is_featured">Is Featured</label><br>
+          <label for="is_featured">Special Offers</label><br>
           <input type="checkbox" name='is_featured' id='is_featured' value='1' checked> Yes                        
         </div>
               {{-- {{$categories}} --}}
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-          <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
+          <label for="price" class="col-form-label">Price(IDR) <span class="text-danger">*</span></label>
           <input id="price" type="number" name="price" placeholder="Enter price"  value="{{old('price')}}" class="form-control">
           @error('price')
           <span class="text-danger">{{$message}}</span>
@@ -84,17 +84,17 @@
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="brand_id">Brand</label>
+        {{-- <div class="form-group">
+          <label for="brand_id">Brand</label> --}}
           {{-- {{$brands}} --}}
 
-          <select name="brand_id" class="form-control">
+          {{-- <select name="brand_id" class="form-control">
               <option value="">--Select Brand--</option>
              @foreach($brands as $brand)
               <option value="{{$brand->id}}">{{$brand->title}}</option>
              @endforeach
           </select>
-        </div>
+        </div> --}}
 
         <div class="form-group">
           <label for="condition">Condition</label>
@@ -117,8 +117,8 @@
           <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                  <i class="fa fa-picture-o"></i> Choose
+                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+                  <i class="fas fa-image"></i> Choose
                   </a>
               </span>
           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{old('photo')}}">
@@ -139,8 +139,8 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        <div class="form-group mb-3">
-          <button type="reset" class="btn btn-warning">Reset</button>
+        <div style="margin-top: 2.5%" class="form-group mb-3">
+          <button style="margin-right: 6px" type="reset" class="btn btn-warning">Reset</button>
            <button class="btn btn-success" type="submit">Submit</button>
         </div>
       </form>

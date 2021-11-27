@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || About Us')
+@section('title','Aleena Byand Store - About Us')
 
 @section('main-content')
 
@@ -190,7 +190,7 @@
 					<div class="single-service">
 						<i class="ti-rocket"></i>
 						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<p>Use Special Code</p>
 					</div>
 					<!-- End Single Service -->
 				</div>

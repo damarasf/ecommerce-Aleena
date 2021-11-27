@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-TECH || Blog Detail page')
+@section('title','Aleena Byand Store - Blog')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -11,7 +11,7 @@
                     <div class="bread-inner">
                         <ul class="bread-list">
                             <li><a href="{{route('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">Blog Single Sidebar</a></li>
+                            <li class="active"><a href="javascript:void(0);">Blog Detail</a></li>
                         </ul>
                     </div>
                 </div>

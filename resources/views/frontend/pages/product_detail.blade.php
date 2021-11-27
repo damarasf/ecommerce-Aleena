@@ -14,7 +14,7 @@
 	<meta property="og:image" content="{{$product_detail->photo}}">
 	<meta property="og:description" content="{{$product_detail->description}}">
 @endsection
-@section('title','E-SHOP || PRODUCT DETAIL')
+@section('title','Aleena Byand Store - Product Detail')
 @section('main-content')
 
 		<!-- Breadcrumbs -->
@@ -25,7 +25,7 @@
 						<div class="bread-inner">
 							<ul class="bread-list">
 								<li><a href="{{route('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="">Shop Details</a></li>
+								<li class="active"><a href="">Product Details</a></li>
 							</ul>
 						</div>
 					</div>
@@ -84,7 +84,10 @@
                                                 @php 
                                                     $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
                                                 @endphp
-												<p class="price"><span class="discount">${{number_format($after_discount,2)}}</span><s>${{number_format($product_detail->price,2)}}</s> </p>
+												<p class="price"><span class="discount">Rp {{number_format($after_discount)}}</span>
+													@if($product_detail->discount>0)
+													<s>Rp {{number_format($product_detail->price)}}</s> </p>
+													@endif
 												<p class="description">{!!($product_detail->summary)!!}</p>
 											</div>
 											<!--/ End Description -->
@@ -326,35 +329,75 @@
 												$photo=explode(',',$data->photo);
 											@endphp
                                             <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                            <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                            <span class="price-dec">{{$data->discount}} % Off</span>
-                                                                    {{-- <span class="out-of-stock">Hot</span> --}}
+											<img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+											@if($data->discount)
+                                            <span class="price-dec">{{$data->discount}}% Off</span>
+																	{{-- <span class="out-of-stock">Hot</span> --}}
+											@endif
                                         </a>
                                         <div class="button-head">
                                             <div class="product-action">
-                                                <a data-toggle="modal" data-target="#modelExample" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a data-toggle="modal" data-target="#{{$data->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$data->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                {{-- <a data-toggle="modal" data-target="#modelExample" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a> --}}
+                                                {{-- <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a> --}}
                                             </div>
                                             <div class="product-action-2">
-                                                <a title="Add to cart" href="#">Add to cart</a>
+                                                <a title="Add to cart" href="{{route('add-to-cart',$data->slug)}}">Add to cart</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h3><a href="{{route('product-detail',$data->slug)}}">{{$data->title}}</a></h3>
+										<h3 style="font-size: 13pt"><a href="{{route('product-detail',$data->slug)}}">{{$data->title}}</a></h3>
+										<div class="quickview-ratting-review">
+											<div class="quickview-ratting-wrap">
+												<div class="quickview-ratting">
+													{{-- <i class="yellow fa fa-star"></i>
+													<i class="yellow fa fa-star"></i>
+													<i class="yellow fa fa-star"></i>
+													<i class="yellow fa fa-star"></i>
+													<i class="fa fa-star"></i> --}}
+													@php
+														$rate=DB::table('product_reviews')->where('product_id',$product_detail->id)->avg('rate');
+														$rate_count=DB::table('product_reviews')->where('product_id',$product_detail->id)->count();
+													@endphp
+													<div class="rating">
+														@php
+															$rate=ceil($product_detail->getReview->avg('rate'))
+														@endphp
+															@for($i=1; $i<=5; $i++)
+																@if($rate>=$i)
+																	<i class="fa fa-star" style="color: orange"></i>
+																@else
+																	<i class="fa fa-star-o" style="color: orange" ></i>
+																@endif
+															@endfor
+													</div>
+												</div>
+												{{-- <a href="#"> ({{$rate_count}} customer review)</a> --}}
+											</div>
+											{{-- <div class="quickview-stock">
+												@if($product->stock >0)
+												<span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
+												@else
+												<span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+												@endif
+											</div> --}}
+										</div>
                                         <div class="product-price">
                                             @php 
                                                 $after_discount=($data->price-(($data->discount*$data->price)/100));
                                             @endphp
-                                            <span class="old">${{number_format($data->price,2)}}</span>
-                                            <span>${{number_format($after_discount,2)}}</span>
-                                        </div>
+                                            <span><b>Rp {{number_format($after_discount)}}</b></span>
+												@if($data->discount>0)
+												<span class="old" style="font-size: 10pt; padding-left:2%">Rp {{number_format($data->price)}}</span>
+												@endif
+										</div>
                                       
                                     </div>
                                 </div>
                                 <!-- End Single Product -->
-                                	
                             @endif
                         @endforeach
                     </div>

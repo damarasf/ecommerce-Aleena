@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-@include('backend.layouts.head')
+  @extends('frontend.layouts.master')
+
+  @section('title','Aleena Byand Store - Login')
+  
+  @section('main-content')
 
 </head>
 
@@ -47,7 +51,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
+                    <a class="small" href="{{route('login.form')}}">Already have an account? Login!</a>
                   </div>
                 </div>
               </div>

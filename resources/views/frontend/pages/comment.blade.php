@@ -11,7 +11,7 @@
             @endif
             <div class="content">
                 {{-- {{$post}} --}}
-            <h4>{{$comment->user_info['name']}} <span>At {{$comment->created_at->format('g: i a')}} On {{$comment->created_at->format('M d Y')}}</span></h4>
+            <h4>{{$comment->user_info['name']}} <span>At {{$comment->created_at->format('H:i')}} On {{$comment->created_at->format('M d Y')}}</span></h4>
                 <p>{{$comment->comment}}</p>
                 @if($dep)
                 <div class="button">

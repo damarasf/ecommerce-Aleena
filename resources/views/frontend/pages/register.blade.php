@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Register Page')
+@section('title','Aleena Byand Store - Register')
 
 @section('main-content')
 	<!-- Breadcrumbs -->
@@ -19,11 +19,11 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-            
+
     <!-- Shop Login -->
     <section class="shop login section">
         <div class="container">
-            <div class="row"> 
+            <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-12">
                     <div class="login-form">
                         <h2>Register</h2>
@@ -70,12 +70,10 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Register</button>
-                                        <a href="{{route('login.form')}}" class="btn">Login</a>
-                                        OR
-                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                        <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
+                                        <center><button class="btn" type="submit" style="margin-bottom: 15px; width: 63%; margin-top: 10px" >Register</button>
+                                        <div class="col-12">Account already ? <a href="{{route('login.form')}}" class="reg" style="color: orange">Sign in</a></div> </center>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -94,25 +92,11 @@
     .shop.login .form .btn{
         margin-right:0;
     }
-    .btn-facebook{
-        background:#39579A;
+
+    .reg:hover {
+        text-decoration: underline;
     }
-    .btn-facebook:hover{
-        background:#073088 !important;
-    }
-    .btn-github{
-        background:#444444;
-        color:white;
-    }
-    .btn-github:hover{
-        background:black !important;
-    }
-    .btn-google{
-        background:#ea4335;
-        color:white;
-    }
-    .btn-google:hover{
-        background:rgb(243, 26, 26) !important;
-    }
+
+
 </style>
 @endpush

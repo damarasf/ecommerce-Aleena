@@ -420,7 +420,7 @@
                                 <div class="single-widget get-button">
                                     <div class="content">
                                         <div class="button">
-                                            <button type="submit" class="btn">proceed to checkout</button>
+                                            <button type="submit" class="btn">Proceed to Checkout</button>
                                         </div>
                                     </div>
                                 </div>

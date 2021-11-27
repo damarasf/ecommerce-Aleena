@@ -403,6 +403,9 @@ class FrontendController extends Controller
     // Reset password
     public function showResetForm(){
         return view('auth.passwords.old-reset');
+        // Auth::guard('web')->logout();
+        // Session::flush();
+        // Auth::guard('web')->login($this);
     }
 
     public function subscribe(Request $request){

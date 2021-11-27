@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-Shop || Login Page')
+@section('title','Aleena Byand Store - Login')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -19,11 +19,11 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-            
+
     <!-- Shop Login -->
     <section class="shop login section">
         <div class="container">
-            <div class="row"> 
+            <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-12">
                     <div class="login-form">
                         <h2>Login</h2>
@@ -44,30 +44,32 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Your Password<span>*</span></label>
-                                        <input type="password" name="password" placeholder="" required="required" value="{{old('password')}}">
+                                        <input type="password" name="password" placeholder=""  required="required" value="{{old('password')}}">
                                         @error('password')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
+                                        <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Remember me</label>
+                                    </div>
+                                    @if (Route::has('password.request'))
+                                        <a class="lost-pass" href="{{ route('password.reset1') }}">Lost your password?</a>
+                                        {{-- <a class="lost-pass" href="{{ route('password.reset') }}" style="float: right; margin-top: 20px;">
+                                            Lost your password?
+                                        </a> --}}
+                                    @endif
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Login</button>
-                                        <a href="{{route('register.form')}}" class="btn">Register</a>
-                                        OR
-                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                        <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
+                                        <center><button class="btn" type="submit">Login</button>
+                                        {{-- <center><button class="btn" style="margin-bottom: 10px; width: 63%;" type="submit">Login</button> --}}
+
+                                        <div class="col-12">Don't have an account ? <a href="{{route('register.form')}}" class="reg" style="color: orange">Register Now</a></div>
+                                        </center>
+
 
                                     </div>
-                                    <div class="checkbox">
-                                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Remember me</label>
-                                    </div>
-                                    @if (Route::has('password.request'))
-                                        <a class="lost-pass" href="{{ route('password.reset') }}">
-                                            Lost your password?
-                                        </a>
-                                    @endif
+
                                 </div>
                             </div>
                         </form>
@@ -84,25 +86,11 @@
     .shop.login .form .btn{
         margin-right:0;
     }
-    .btn-facebook{
-        background:#39579A;
+
+
+    .reg:hover {
+        text-decoration: underline;
     }
-    .btn-facebook:hover{
-        background:#073088 !important;
-    }
-    .btn-github{
-        background:#444444;
-        color:white;
-    }
-    .btn-github:hover{
-        background:black !important;
-    }
-    .btn-google{
-        background:#ea4335;
-        color:white;
-    }
-    .btn-google:hover{
-        background:rgb(243, 26, 26) !important;
-    }
+
 </style>
 @endpush

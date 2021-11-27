@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','E-SHOP || DASHBOARD')
+@section('title','ADMIN - Aleena Byand Store')
 @section('main-content')
 <div class="container-fluid">
     @include('backend.layouts.notification')
@@ -91,7 +91,7 @@
         <div class="card shadow mb-4">
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Net Income</h6>
             
           </div>
           <!-- Card Body -->
@@ -189,10 +189,10 @@
                       label: "Earnings",
                       lineTension: 0.3,
                       backgroundColor: "rgba(78, 115, 223, 0.05)",
-                      borderColor: "rgba(78, 115, 223, 1)",
+                      borderColor: "#5a5c69",
                       pointRadius: 3,
-                      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                      pointBorderColor: "rgba(78, 115, 223, 1)",
+                      pointBackgroundColor: "#5a5c69",
+                      pointBorderColor: "#5a5c69",
                       pointHoverRadius: 3,
                       pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
                       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
@@ -230,7 +230,7 @@
                           padding: 10,
                           // Include a dollar sign in the ticks
                           callback: function(value, index, values) {
-                            return '$' + number_format(value);
+                            return 'Rp ' + number_format(value);
                           }
                         },
                         gridLines: {
@@ -262,7 +262,7 @@
                       callbacks: {
                         label: function(tooltipItem, chart) {
                           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                          return datasetLabel + ': Rp ' + number_format(tooltipItem.yLabel);
                         }
                       }
                     }

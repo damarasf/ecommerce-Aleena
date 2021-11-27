@@ -34,8 +34,8 @@
 
 
         <div class="form-group">
-          <label for="is_featured">Is Featured</label><br>
-          <input type="checkbox" name='is_featured' id='is_featured' value='{{$product->is_featured}}' {{(($product->is_featured) ? 'checked' : '')}}> Yes                        
+          <label for="is_featured">Special Offers</label><br>
+          <input type="checkbox" name='is_featured' id='is_featured' value="1" {{$product->is_featured || old('is_featured, 0') === 1 ? 'checked' : ''}}> Yes
         </div>
               {{-- {{$categories}} --}}
 
@@ -63,7 +63,7 @@
         </div>
 
         <div class="form-group">
-          <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
+          <label for="price" class="col-form-label">Price(IDR) <span class="text-danger">*</span></label>
           <input id="price" type="number" name="price" placeholder="Enter price"  value="{{$product->price}}" class="form-control">
           @error('price')
           <span class="text-danger">{{$message}}</span>
@@ -93,7 +93,7 @@
               @endforeach
           </select>
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="brand_id">Brand</label>
           <select name="brand_id" class="form-control">
               <option value="">--Select Brand--</option>
@@ -101,7 +101,7 @@
               <option value="{{$brand->id}}" {{(($product->brand_id==$brand->id)? 'selected':'')}}>{{$brand->title}}</option>
              @endforeach
           </select>
-        </div>
+        </div> --}}
 
         <div class="form-group">
           <label for="condition">Condition</label>
@@ -147,7 +147,7 @@
           @enderror
         </div>
         <div class="form-group mb-3">
-           <button class="btn btn-success" type="submit">Update</button>
+           <button style="margin-top: 1%" class="btn btn-success" type="submit">Update</button>
         </div>
       </form>
     </div>

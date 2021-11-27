@@ -1,11 +1,12 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+      {{-- <div class="sidebar-brand-icon rotate-n-15"> --}}
+      <div class="sidebar-brand-icon">
+        <i class="fa fa-font"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">Admin</div>
+      <div class="sidebar-brand-text mx-3">Admin Aleena</div>
     </a>
 
     <!-- Divider -->
@@ -84,7 +85,7 @@
     </li>
 
     {{-- Brands --}}
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brandCollapse" aria-expanded="true" aria-controls="brandCollapse">
           <i class="fas fa-table"></i>
           <span>Brands</span>
@@ -96,7 +97,7 @@
             <a class="collapse-item" href="{{route('brand.create')}}">Add Brand</a>
           </div>
         </div>
-    </li>
+    </li> --}}
 
     {{-- Shipping --}}
     <li class="nav-item">
@@ -116,7 +117,7 @@
     <!--Orders -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('order.index')}}">
-            <i class="fas fa-hammer fa-chart-area"></i>
+            <i class="fa fa-shopping-cart fa-chart-area"></i>
             <span>Orders</span>
         </a>
     </li>

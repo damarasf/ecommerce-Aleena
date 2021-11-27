@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || PRODUCT PAGE')
+@section('title','Aleena Byand Store - Product')
 
 @section('main-content')
 	
@@ -119,7 +119,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">${{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>                                                
+                                                <p class="price"><del class="text-muted">Rp {{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>                                                
                                             </div>
                                         </div>
                                         <!-- End Single Post -->
@@ -127,7 +127,7 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
+                                {{-- <div class="single-widget category">
                                     <h3 class="title">Brands</h3>
                                     <ul class="categor-list">
                                         @php
@@ -137,7 +137,7 @@
                                             <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
                                         @endforeach
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <!--/ End Single Widget -->
                         	</div>
 						</div>
@@ -151,20 +151,23 @@
 												<label>Show :</label>
 												<select class="show" name="show" onchange="this.form.submit();">
 													<option value="">Default</option>
-													<option value="9" @if(!empty($_GET['show']) && $_GET['show']=='9') selected @endif>09</option>
+													<option value="10" @if(!empty($_GET['show']) && $_GET['show']=='10') selected @endif>10</option>
 													<option value="15" @if(!empty($_GET['show']) && $_GET['show']=='15') selected @endif>15</option>
-													<option value="21" @if(!empty($_GET['show']) && $_GET['show']=='21') selected @endif>21</option>
+													<option value="20" @if(!empty($_GET['show']) && $_GET['show']=='25') selected @endif>20</option>
 													<option value="30" @if(!empty($_GET['show']) && $_GET['show']=='30') selected @endif>30</option>
 												</select>
 											</div>
 											<div class="single-shorter">
+												@php
+                                                	$after_discount=($product->price-($product->price*$product->discount)/100);
+                                           		 @endphp
 												<label>Sort By :</label>
 												<select class='sortBy' name='sortBy' onchange="this.form.submit();">
 													<option value="">Default</option>
 													<option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>Name</option>
 													<option value="price" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='price') selected @endif>Price</option>
 													<option value="category" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='category') selected @endif>Category</option>
-													<option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>Brand</option>
+													{{-- <option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>Brand</option> --}}
 												</select>
 											</div>
 										</div>
@@ -212,8 +215,8 @@
 																@php
 																	$after_discount=($product->price-($product->price*$product->discount)/100);
 																@endphp
-																<span>${{number_format($after_discount,2)}}</span>
-																<del>${{number_format($product->price,2)}}</del>
+																<span>Rp {{number_format($after_discount,2)}}</span>
+																<del>Rp {{number_format($product->price,2)}}</del>
 															</div>
 															<h3 class="title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
 														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}

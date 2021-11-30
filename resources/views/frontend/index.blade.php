@@ -169,8 +169,8 @@
                                                     <span class="hot">Hot</span>
                                                 @elseif ($product->discount)
                                                     <span class="price-dec">{{$product->discount}}% Off</span>
-                                                @else
-                                                    <span class="price-dec">{{$product->discount}}% Off</span>
+                                                {{-- @else
+                                                    <span class="price-dec">{{$product->discount}}% Off</span> --}}
                                                 @endif
 
 
@@ -312,6 +312,11 @@
                                     @endphp
                                     <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                     <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                    @if ($product->discount)
+                                        <span class="price-dec">{{$product->discount}}% Off</span>
+                                    {{-- @else
+                                        <span class="price-dec">{{$product->discount}}% Off</span> --}}
+                                    @endif
                                     {{-- <span class="out-of-stock">Hot</span> --}}
                                     {{-- @if($product->condition=='hot')
                                         <span class="hot">Hot</span>
@@ -419,6 +424,9 @@
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content" style="padding-bottom:45px">
                                         <h4 class="title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
+                                        @php
+                                            $after_discount=($product->price-($product->price*$product->discount)/100);
+                                        @endphp
                                         <p class="price with-discount">Rp {{number_format($after_discount)}}</p>
                                         {{-- <span><b>Rp {{number_format($after_discount)}}</b></span> --}}
                                     </div>
@@ -623,7 +631,7 @@
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>
-                                        @if($product->size)
+                                        {{-- @if($product->size)
                                             <div class="size">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
@@ -638,6 +646,37 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
+                                                    <div class="col-lg-6 col-12">
+                                                        <h5 class="title">Color</h5>
+                                                        <select>
+                                                            <option selected="selected">orange</option>
+                                                            <option>purple</option>
+                                                            <option>black</option>
+                                                            <option>pink</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif --}}
+                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
+                                        @csrf 
+                                        @if($product->size)
+                                        <div class="form-group">
+                                            <div class="size">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-12">
+                                                        <h5 class="title">Size</h5>
+                                                        <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                            @php
+                                                            $sizes =explode(',',$product->size);
+                                                            // dd($sizes ?? '');
+                                                            @endphp
+                                                            @foreach($sizes as $size)
+                                                                <option value="{{ $size }}">{{ ucwords($size) }}</option>
+                                                            @endforeach
+
+                                                        </select>
+                                                    </div>
                                                     {{-- <div class="col-lg-6 col-12">
                                                         <h5 class="title">Color</h5>
                                                         <select>
@@ -649,9 +688,8 @@
                                                     </div> --}}
                                                 </div>
                                             </div>
+                                            </div>
                                         @endif
-                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
-                                            @csrf 
                                             <div class="quantity">
                                                 <!-- Input Order -->
                                                 <div class="input-group">

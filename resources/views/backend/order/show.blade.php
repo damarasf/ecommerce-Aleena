@@ -32,8 +32,8 @@
             <td>{{$order->first_name}} {{$order->last_name}}</td>
             <td>{{$order->email}}</td>
             <td>{{$order->quantity}}</td>
-            <td>@foreach($shipping_charge as $data) $ {{number_format($data,2)}} @endforeach</td>
-            <td>${{number_format($order->total_amount,2)}}</td>
+            <td>@foreach($shipping_charge as $data) Rp {{number_format($data)}} @endforeach</td>
+            <td>Rp {{number_format($order->total_amount)}}</td>
             <td>
                 @if($order->status=='new')
                   <span class="badge badge-primary">{{$order->status}}</span>
@@ -71,7 +71,7 @@
                     </tr>
                     <tr>
                         <td>Order Date</td>
-                        <td> : {{$order->created_at->format('D d M, Y')}} at {{$order->created_at->format('g : i a')}} </td>
+                        <td> : {{$order->created_at->format('D d M, Y')}} at {{$order->created_at->format('H : i')}} </td>
                     </tr>
                     <tr>
                         <td>Quantity</td>
@@ -86,15 +86,15 @@
                           $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
                       @endphp
                         <td>Shipping Charge</td>
-                        <td> : $ {{number_format($shipping_charge[0],2)}}</td>
+                        <td> : Rp {{number_format($shipping_charge[0])}}</td>
                     </tr>
                     <tr>
                       <td>Coupon</td>
-                      <td> : $ {{number_format($order->coupon,2)}}</td>
+                      <td> : Rp {{number_format($order->coupon)}}</td>
                     </tr>
                     <tr>
                         <td>Total Amount</td>
-                        <td> : $ {{number_format($order->total_amount,2)}}</td>
+                        <td> : Rp {{number_format($order->total_amount)}}</td>
                     </tr>
                     <tr>
                         <td>Payment Method</td>

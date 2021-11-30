@@ -60,6 +60,9 @@ class CartController extends Controller
             'quant'      =>  'required',
         ]);
         // dd($request->quant[1]);
+        $this->validate($request, [
+            'size'      => 'required',
+        ]);
 
 
         $product = Product::where('slug', $request->slug)->first();
@@ -91,6 +94,7 @@ class CartController extends Controller
             $cart->product_id = $product->id;
             $cart->price = ($product->price-($product->price*$product->discount)/100);
             $cart->quantity = $request->quant[1];
+            $cart->size = $request->size;
             $cart->amount=($product->price * $request->quant[1]);
             if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error','Stock not sufficient!.');
             // return $cart;

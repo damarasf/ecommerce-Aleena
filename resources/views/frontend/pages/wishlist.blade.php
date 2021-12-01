@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','Wishlist Page')
+@section('title','Aleena Byand Store - Wishlist')
 @section('main-content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -46,8 +46,10 @@
 											<p class="product-name"><a href="{{route('product-detail',$wishlist->product['slug'])}}">{{$wishlist->product['title']}}</a></p>
 											<p class="product-des">{!!($wishlist['summary']) !!}</p>
 										</td>
-										<td class="total-amount" data-title="Total"><span>${{$wishlist['amount']}}</span></td>
-										<td><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>Add To Cart</a></td>
+										<td class="total-amount" data-title="Total"><span>Rp {{number_format($wishlist['amount'])}}</span></td>
+										{{-- <td><center><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>Add To Cart</a></center></td> --}}
+										<td><center><a data-toggle="modal" data-target="#exampleModal" href="#" class="btn text-white">Add To Cart</a></center></td>
+										{{-- <td><a data-toggle="modal" data-target="#exampleModal" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a></td> --}}
 										<td class="action" data-title="Remove"><a href="{{route('wishlist-delete',$wishlist->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 									</tr>
 								@endforeach
@@ -79,7 +81,7 @@
 					<div class="single-service">
 						<i class="ti-rocket"></i>
 						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<p>Use Special Code</p>
 					</div>
 					<!-- End Single Service -->
 				</div>

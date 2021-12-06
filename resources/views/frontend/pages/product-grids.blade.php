@@ -192,11 +192,13 @@
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                        {{-- <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a> --}}
+                                                        <a href="{{route('product-detail',$product->slug)}}" title="Product Detail"><i class=" ti-eye"></i><span>Product Detail</span></a>
                                                         <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" class="wishlist" data-id="{{$product->id}}"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                     </div>
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                        {{-- <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,17 +287,18 @@
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <!-- Product Slider -->
                                             <div class="product-gallery">
-                                                <div class="quickview-slider-active">
+                                                {{-- <div class="quickview-slider-active"> --}}
                                                     @php 
                                                         $photo=explode(',',$product->photo);
                                                     // dd($photo);
                                                     @endphp
-                                                    @foreach($photo as $data)
+                                                    {{-- @foreach($photo as $data)
                                                         <div class="single-slider">
                                                             <img src="{{$data}}" alt="{{$data}}">
                                                         </div>
-                                                    @endforeach
-                                                </div>
+                                                    @endforeach --}}
+                                                    <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                {{-- </div> --}}
                                             </div>
                                         <!-- End Product slider -->
                                     </div>
@@ -339,8 +342,8 @@
                                             <div class="quickview-peragraph">
                                                 <p>{!! html_entity_decode($product->summary) !!}</p>
                                             </div>
-                                            @if($product->size)
-                                                {{-- <div class="size">
+                                            {{-- @if($product->size)
+                                                <div class="size">
                                                     <h4>Size</h4>
                                                     <ul>
                                                         @php 
@@ -351,7 +354,7 @@
                                                         <li><a href="#" class="one">{{$size}}</a></li>
                                                         @endforeach
                                                     </ul>
-                                                </div> --}}
+                                                </div>
                                             @endif
                                             <div class="size">
                                                 <div class="row">
@@ -367,7 +370,7 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    {{-- <div class="col-lg-6 col-12">
+                                                    <div class="col-lg-6 col-12">
                                                         <h5 class="title">Color</h5>
                                                         <select>
                                                             <option selected="selected">orange</option>
@@ -375,11 +378,40 @@
                                                             <option>black</option>
                                                             <option>pink</option>
                                                         </select>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <form action="{{route('single-add-to-cart')}}" method="POST">
                                                 @csrf 
+                                                @if($product->size)
+                                                <div class="form-group">
+                                                    <div class="size">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-12">
+                                                                <h5 class="title">Size</h5>
+                                                                <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                                    @php
+                                                                    $sizes =explode(',',$product->size);
+                                                                    // dd($sizes ?? '');
+                                                                    @endphp
+                                                                    @foreach($sizes as $size)
+                                                                        <option value="{{ $size }}">{{ ucwords($size) }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            {{-- <div class="col-lg-6 col-12">
+                                                                <h5 class="title">Color</h5>
+                                                                <select>
+                                                                    <option selected="selected">orange</option>
+                                                                    <option>purple</option>
+                                                                    <option>black</option>
+                                                                    <option>pink</option>
+                                                                </select>
+                                                            </div> --}}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                @endif
                                                 <div class="quantity">
                                                     <!-- Input Order -->
                                                     <div class="input-group">

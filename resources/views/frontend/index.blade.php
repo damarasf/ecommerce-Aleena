@@ -181,7 +181,8 @@
                                                     <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                 </div>
                                                 <div class="product-action-2">
-                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    {{-- <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -328,7 +329,8 @@
                                         <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                     </div>
                                     <div class="product-action-2">
-                                        <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        {{-- <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -418,7 +420,7 @@
                                             // dd($photo);
                                         @endphp
                                         <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                        <a href="{{route('product-detail',$product->slug)}}"s class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                        <a title="Product detail" href="{{route('product-detail',$product->slug)}}"s class="buy"><i class="fa fa-shopping-bag"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
@@ -575,17 +577,19 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <!-- Product Slider -->
                                         <div class="product-gallery">
-                                            <div class="quickview-slider-active">
+                                            {{-- <div class="quickview-slider-active"> --}}
                                                 @php 
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp
-                                                @foreach($photo as $data)
+                                                {{-- @foreach($photo as $data)
                                                     <div class="single-slider">
                                                         <img src="{{$data}}" alt="{{$data}}">
                                                     </div>
-                                                @endforeach
-                                            </div>
+                                                @endforeach --}}
+                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+												{{-- <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}"> --}}
+                                            {{-- </div> --}}
                                         </div>
                                     <!-- End Product slider -->
                                 </div>

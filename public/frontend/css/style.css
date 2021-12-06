@@ -4026,6 +4026,10 @@ Version:1.0
 	-moz-transition:all 0.4s ease;
 	transition:all 0.4s ease;
 }
+/* .shop-blog .shop-single-blog:hover{
+	box-shadow: 0px 10px 10px #0000000a;
+	border-radius: 9px;
+} */
 .shop-blog .shop-single-blog{
 	box-shadow: 0px 10px 10px #0000000a;
 	border-radius: 9px;

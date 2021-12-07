@@ -103,25 +103,28 @@
 											</div> --}}
 											<!--/ End Color -->
 											<!-- Size -->
+											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
+											@csrf
 											@if($product_detail->size)
 												<div class="size mt-4">
 													<h4>Size</h4>
-													<ul>
-														@php 
-															$sizes=explode(',',$product_detail->size);
-															// dd($sizes);
+													<select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+														<option value="" selected="selected">--Select Size--</option>
+														@php
+														$sizes =explode(',',$product_detail->size);
+														// dd($sizes ?? '');
 														@endphp
 														@foreach($sizes as $size)
-														<li><a href="#" class="one">{{$size}}</a></li>
+															<option value="{{ $size }}">{{ ucwords($size) }}</option>
 														@endforeach
-													</ul>
+													</select>
 												</div>
 											@endif
 											<!--/ End Size -->
 											<!-- Product Buy -->
 											<div class="product-buy">
-												<form action="{{route('single-add-to-cart')}}" method="POST">
-													@csrf 
+												{{-- <form action="{{route('single-add-to-cart')}}" method="POST">
+													@csrf  --}}
 													<div class="quantity">
 														<h6>Quantity :</h6>
 														<!-- Input Order -->

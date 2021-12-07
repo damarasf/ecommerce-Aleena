@@ -1116,14 +1116,14 @@ object {
 	cursor: pointer;
 	opacity: 1;
 	padding: 0;
-	margin: 0;
+	margin: 10px;
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
 	text-shadow: none;
 	font-size: 11px;
 	background: transparent;
-	color: #737373;
+	color: #F7941D;
 	border-radius: 100%;
 	border: 1px solid #eee;
 	-webkit-transition:all 0.4s ease;
@@ -1296,14 +1296,14 @@ object {
 }
 .quickview-content .nice-select .list li.focus{
 	font-weight:400;
-	text-transform:lowercase;
+	text-transform:capitalize;
 }
 .quickview-content .nice-select .list li {
 	color: #666;
 	border-radius: 0px;
 	font-size: 14px;
 	font-weight: 400;
-	text-transform:lowercase;
+	text-transform:capitalize;
 }
 .quickview-content .nice-select .list li:hover{
 	background:#F7941D;

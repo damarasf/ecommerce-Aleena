@@ -182,7 +182,8 @@
                                         @php
                                             $after_discount=($wishlist->product['price']-($wishlist->product['price']*$wishlist->product['discount'])/100);
                                         @endphp
-                                        <h3><small><del class="text-muted">${{number_format($wishlist->product['price'],2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                        <h3>Rp {{number_format($after_discount)}}&ensp;<small><del class="text-muted">Rp {{number_format($wishlist->product['price'])}}</del></small></h3>
+                                        {{-- <h3><small><del class="text-muted">Rp {{number_format($wishlist->product['price'])}}</del></small>    Rp{{number_format($after_discount,2)}}  </h3> --}}
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($wishlist->product['summary']) !!}</p>
                                         </div>
@@ -197,6 +198,7 @@
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                        <option value="" selected="selected">--Select Size--</option>
                                                             @php
                                                             $sizes =explode(',',$wishlist->product['size']);
                                                             // dd($sizes ?? '');
@@ -239,7 +241,7 @@
                                                 <!--/ End Input Order -->
                                             </div>
                                             <div class="add-to-cart">
-                                                <button type="submit" class="btn">buy now</button>
+                                                <button type="submit" class="btn">Add to cart</button>
                                                 <a href="{{route('add-to-wishlist',$wishlist->product['slug'])}}" class="btn min"><i class="ti-heart"></i></a>
                                             </div>
                                         </form>

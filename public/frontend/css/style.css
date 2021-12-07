@@ -2458,12 +2458,14 @@ Version:1.0
 	font-size: 14px;
 	font-weight: 500;
 	margin-top: 0px;
+	margin-bottom: 6px;
 }
 .shop.single .product-des .size ul{
 	display:inline-block;
 	margin-top: 10px;
+	border: 1px solid #eee;
 }
-.shop.single .product-des .size ul li {
+/* .shop.single .product-des .size ul li {
 	display: inline-block;
 	margin-right: 5px;
 }
@@ -2485,7 +2487,7 @@ Version:1.0
 .shop.single .quantity {
 	display: inline-block;
 	margin-right: 10px;
-}
+} */
 .shop.single .quantity h6 {
 	display: inline-block;
 	margin-right: 10px;

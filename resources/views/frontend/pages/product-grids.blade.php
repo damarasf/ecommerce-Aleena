@@ -19,7 +19,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    
+
     <!-- Product Style -->
     <form action="{{route('shop.filter')}}" method="POST">
         @csrf
@@ -100,7 +100,7 @@
                                     {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
-                                        @php 
+                                        @php
                                             $photo=explode(',',$product->photo);
                                         @endphp
                                         <div class="single-post first">
@@ -113,7 +113,7 @@
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
                                                 <p class="price"><del class="text-muted">Rp {{number_format($product->price)}}</del>   Rp{{number_format($org)}}  </p>
-                                                
+
                                             </div>
                                         </div>
                                         <!-- End Single Post -->
@@ -181,7 +181,7 @@
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{route('product-detail',$product->slug)}}">
-                                                    @php 
+                                                    @php
                                                         $photo=explode(',',$product->photo);
                                                     @endphp
                                                     <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
@@ -192,11 +192,13 @@
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                        {{-- <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a> --}}
+                                                        <a href="{{route('product-detail',$product->slug)}}" title="Product Detail"><i class=" ti-eye"></i><span>Product Detail</span></a>
                                                         <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" class="wishlist" data-id="{{$product->id}}"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                     </div>
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                        {{-- <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -251,13 +253,13 @@
                             @else
                                     <h4 class="text-warning" style="margin:100px auto;">There are no products.</h4>
                             @endif
-                            
 
-                           
+
+
                         </div>
                         <div class="row">
                             <div class="col-md-12 justify-content-center d-flex">
-                                {{$products->appends($_GET)->links()}} 
+                                {{$products->appends($_GET)->links()}}
                             </div>
                           </div>
 
@@ -266,11 +268,11 @@
             </div>
         </section>
     </form>
-   
-    <!--/ End Product Style 1  -->	
-  
-    
-    
+
+    <!--/ End Product Style 1  -->
+
+
+
     <!-- Modal -->
     @if($products)
         @foreach($products as $key=>$product)
@@ -285,17 +287,18 @@
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <!-- Product Slider -->
                                             <div class="product-gallery">
-                                                <div class="quickview-slider-active">
-                                                    @php 
+                                                {{-- <div class="quickview-slider-active"> --}}
+                                                    @php
                                                         $photo=explode(',',$product->photo);
                                                     // dd($photo);
                                                     @endphp
-                                                    @foreach($photo as $data)
+                                                    {{-- @foreach($photo as $data)
                                                         <div class="single-slider">
                                                             <img src="{{$data}}" alt="{{$data}}">
                                                         </div>
-                                                    @endforeach
-                                                </div>
+                                                    @endforeach --}}
+                                                    <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                {{-- </div> --}}
                                             </div>
                                         <!-- End Product slider -->
                                     </div>
@@ -317,7 +320,7 @@
                                                         @for($i=1; $i<=5; $i++)
                                                             @if($rate>=$i)
                                                                 <i class="yellow fa fa-star"></i>
-                                                            @else 
+                                                            @else
                                                             <i class="fa fa-star"></i>
                                                             @endif
                                                         @endfor
@@ -327,7 +330,7 @@
                                                 <div class="quickview-stock">
                                                     @if($product->stock >0)
                                                     <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
-                                                    @else 
+                                                    @else
                                                     <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
                                                     @endif
                                                 </div>
@@ -339,11 +342,11 @@
                                             <div class="quickview-peragraph">
                                                 <p>{!! html_entity_decode($product->summary) !!}</p>
                                             </div>
-                                            @if($product->size)
-                                                {{-- <div class="size">
+                                            {{-- @if($product->size)
+                                                <div class="size">
                                                     <h4>Size</h4>
                                                     <ul>
-                                                        @php 
+                                                        @php
                                                             $sizes=explode(',',$product->size);
                                                             // dd($sizes);
                                                         @endphp
@@ -351,14 +354,14 @@
                                                         <li><a href="#" class="one">{{$size}}</a></li>
                                                         @endforeach
                                                     </ul>
-                                                </div> --}}
+                                                </div>
                                             @endif
                                             <div class="size">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select>
-                                                            @php 
+                                                            @php
                                                             $sizes=explode(',',$product->size);
                                                             // dd($sizes);
                                                             @endphp
@@ -367,7 +370,7 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    {{-- <div class="col-lg-6 col-12">
+                                                    <div class="col-lg-6 col-12">
                                                         <h5 class="title">Color</h5>
                                                         <select>
                                                             <option selected="selected">orange</option>
@@ -375,11 +378,41 @@
                                                             <option>black</option>
                                                             <option>pink</option>
                                                         </select>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <form action="{{route('single-add-to-cart')}}" method="POST">
-                                                @csrf 
+                                                @csrf
+                                                @if($product->size)
+                                                <div class="form-group">
+                                                    <div class="size">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-12">
+                                                                <h5 class="title">Size</h5>
+                                                                <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                                <option value="" selected="selected">--Select Size--</option>
+                                                                    @php
+                                                                    $sizes =explode(',',$product->size);
+                                                                    // dd($sizes ?? '');
+                                                                    @endphp
+                                                                    @foreach($sizes as $size)
+                                                                        <option value="{{ $size }}">{{ ucwords($size) }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            {{-- <div class="col-lg-6 col-12">
+                                                                <h5 class="title">Color</h5>
+                                                                <select>
+                                                                    <option selected="selected">orange</option>
+                                                                    <option>purple</option>
+                                                                    <option>black</option>
+                                                                    <option>pink</option>
+                                                                </select>
+                                                            </div> --}}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                @endif
                                                 <div class="quantity">
                                                     <!-- Input Order -->
                                                     <div class="input-group">
@@ -416,7 +449,7 @@
         @endforeach
     @endif
     <!-- Modal end -->
-    
+
 @endsection
 @push('styles')
 <style>
@@ -479,7 +512,7 @@
             if($("#price_range").length > 0 && $("#price_range").val()){
                 price_range = $("#price_range").val().trim();
             }
-            
+
             let price = price_range.split('-');
             $("#slider-range").slider({
                 range: true,

@@ -33,11 +33,11 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
-				
+
 		<!-- Shop Single -->
 		<section class="shop single section">
 					<div class="container">
-						<div class="row"> 
+						<div class="row">
 							<div class="col-12">
 								<div class="row">
 									<div class="col-lg-6 col-12">
@@ -46,7 +46,7 @@
 											<!-- Images slider -->
 											<div class="flexslider-thumbnails">
 												<ul class="slides">
-													@php 
+													@php
 														$photo=explode(',',$product_detail->photo);
 													// dd($photo);
 													@endphp
@@ -74,14 +74,14 @@
 															@for($i=1; $i<=5; $i++)
 																@if($rate>=$i)
 																	<li><i class="fa fa-star"></i></li>
-																@else 
+																@else
 																	<li><i class="fa fa-star-o"></i></li>
 																@endif
 															@endfor
 													</ul>
 													<a href="#" class="total-review">({{$product_detail['getReview']->count()}}) Review</a>
                                                 </div>
-                                                @php 
+                                                @php
                                                     $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
                                                 @endphp
 												<p class="price"><span class="discount">Rp {{number_format($after_discount)}}</span>
@@ -103,25 +103,28 @@
 											</div> --}}
 											<!--/ End Color -->
 											<!-- Size -->
+											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
+											@csrf
 											@if($product_detail->size)
 												<div class="size mt-4">
 													<h4>Size</h4>
-													<ul>
-														@php 
-															$sizes=explode(',',$product_detail->size);
-															// dd($sizes);
+													<select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+														<option value="" selected="selected">--Select Size--</option>
+														@php
+														$sizes =explode(',',$product_detail->size);
+														// dd($sizes ?? '');
 														@endphp
 														@foreach($sizes as $size)
-														<li><a href="#" class="one">{{$size}}</a></li>
+															<option value="{{ $size }}">{{ ucwords($size) }}</option>
 														@endforeach
-													</ul>
+													</select>
 												</div>
 											@endif
 											<!--/ End Size -->
 											<!-- Product Buy -->
 											<div class="product-buy">
-												<form action="{{route('single-add-to-cart')}}" method="POST">
-													@csrf 
+												{{-- <form action="{{route('single-add-to-cart')}}" method="POST">
+													@csrf  --}}
 													<div class="quantity">
 														<h6>Quantity :</h6>
 														<!-- Input Order -->
@@ -187,7 +190,7 @@
 													<div class="tab-single review-panel">
 														<div class="row">
 															<div class="col-12">
-																
+
 																<!-- Review -->
 																<div class="comment-review">
 																	<div class="add-review">
@@ -229,13 +232,13 @@
 																			</div>
 																		</div>
 																		<div class="col-lg-12 col-12">
-																			<div class="form-group button5">	
+																			<div class="form-group button5">
 																				<button type="submit" class="btn">Submit</button>
 																			</div>
 																		</div>
 																	</div>
 																</form>
-																@else 
+																@else
 																<p class="text-center p-5">
 																	You need to <a href="{{route('login.form')}}" style="color:rgb(54, 54, 204)">Login</a> OR <a style="color:blue" href="{{route('register.form')}}">Register</a>
 
@@ -244,10 +247,10 @@
 																@endauth
 																	</div>
 																</div>
-															
+
 																<div class="ratting-main">
 																	<div class="avg-ratting">
-																		{{-- @php 
+																		{{-- @php
 																			$rate=0;
 																			foreach($product_detail->rate as $key=>$rate){
 																				$rate +=$rate
@@ -262,7 +265,7 @@
 																		<div class="rating-author">
 																			@if($data->user_info['photo'])
 																			<img src="{{$data->user_info['photo']}}" alt="{{$data->user_info['photo']}}">
-																			@else 
+																			@else
 																			<img src="{{asset('backend/img/avatar.png')}}" alt="Profile.jpg">
 																			@endif
 																		</div>
@@ -274,7 +277,7 @@
 																					@for($i=1; $i<=5; $i++)
 																						@if($data->rate>=$i)
 																							<li><i class="fa fa-star"></i></li>
-																						@else 
+																						@else
 																							<li><i class="fa fa-star-o"></i></li>
 																						@endif
 																					@endfor
@@ -287,9 +290,9 @@
 																	<!--/ End Single Rating -->
 																	@endforeach
 																</div>
-																
+
 																<!--/ End Review -->
-																
+
 															</div>
 														</div>
 													</div>
@@ -304,7 +307,7 @@
 					</div>
 		</section>
 		<!--/ End Shop Single -->
-		
+
 		<!-- Start Most Popular -->
 	<div class="product-area most-popular related-product section">
         <div class="container">
@@ -325,7 +328,7 @@
                                 <div class="single-product">
                                     <div class="product-img">
 										<a href="{{route('product-detail',$data->slug)}}">
-											@php 
+											@php
 												$photo=explode(',',$data->photo);
 											@endphp
                                             <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
@@ -386,7 +389,7 @@
 											</div> --}}
 										</div>
                                         <div class="product-price">
-                                            @php 
+                                            @php
                                                 $after_discount=($data->price-(($data->discount*$data->price)/100));
                                             @endphp
                                             <span><b>Rp {{number_format($after_discount)}}</b></span>
@@ -394,7 +397,7 @@
 												<span class="old" style="font-size: 10pt; padding-left:2%">Rp {{number_format($data->price)}}</span>
 												@endif
 										</div>
-                                      
+
                                     </div>
                                 </div>
                                 <!-- End Single Product -->
@@ -406,7 +409,7 @@
         </div>
     </div>
 	<!-- End Most Popular Area -->
-	
+
 
   <!-- Modal -->
   <div class="modal fade" id="modelExample" tabindex="-1" role="dialog">

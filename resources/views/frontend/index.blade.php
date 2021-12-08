@@ -49,7 +49,7 @@
                 @foreach($banners as $key=>$banner)
             <li data-target="#Gslider" data-slide-to="{{$key}}" class="{{(($key==0)? 'active' : '')}}"></li>
                 @endforeach
-    
+
             </ol>
             <div class="carousel-inner" style="margin-top: 1.8%; border-radius: 12px; height: 480px" role="listbox">
                     @foreach($banners as $key=>$banner)
@@ -84,7 +84,7 @@
 <section class="small-banner section">
     <div class="container-fluid">
         <div class="row">
-            @php 
+            @php
             $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
             @endphp
             @if($category_lists)
@@ -124,12 +124,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">        
+                <div class="col-12">
                     <div class="product-info">
                         <div class="nav-main">
                             <!-- Tab Nav -->
                             <ul class="nav nav-tabs filter-tope-group" id="myTab" role="tablist">
-                                @php 
+                                @php
                                     $categories=DB::table('categories')->where('status','active')->where('is_parent',1)->get();
                                     //dd($categories);
                                 @endphp
@@ -138,7 +138,7 @@
                                     All Products
                                 </button>
                                     @foreach($categories as $key=>$cat)
-                                    
+
                                     <button class="btn buttons" id="$key" data-filter=".{{$cat->id}}">
                                         {{$cat->title}}
                                     </button>
@@ -155,7 +155,7 @@
                                     <div class="single-product">
                                         <div class="product-img">
                                             <a href="{{route('product-detail',$product->slug)}}">
-                                                @php 
+                                                @php
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp
@@ -177,11 +177,13 @@
                                             </a>
                                             <div class="button-head">
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                    {{-- <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a> --}}
+                                                    <a href="{{route('product-detail',$product->slug)}}" title="Product Detail"><i class=" ti-eye"></i><span>Product Detail</span></a>
                                                     <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                 </div>
                                                 <div class="product-action-2">
-                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    {{-- <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -239,7 +241,7 @@
 
                              <!--/ End Single Tab -->
                             @endif
-                       
+
                         <!--/ End Single Tab -->
 
                         </div>
@@ -268,7 +270,7 @@
                     <!-- Single Banner  -->
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
-                            @php 
+                            @php
                                 $photo=explode(',',$data->photo);
                             @endphp
                             <img style="border-radius: 12px" src="{{$photo[0]}}" alt="{{$photo[0]}}">
@@ -306,7 +308,7 @@
                         <div class="single-product">
                             <div class="product-img">
                                 <a href="{{route('product-detail',$product->slug)}}">
-                                    @php 
+                                    @php
                                         $photo=explode(',',$product->photo);
                                     // dd($photo);
                                     @endphp
@@ -324,11 +326,13 @@
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">
-                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                        {{-- <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick Shop" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a> --}}
+                                        <a href="{{route('product-detail',$product->slug)}}" title="Product Detail"><i class=" ti-eye"></i><span>Product Detail</span></a>
                                         <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                     </div>
                                     <div class="product-action-2">
-                                        <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        {{-- <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -370,7 +374,7 @@
                                     </div> --}}
                                 </div>
                                 <div class="product-price">
-                                    @php 
+                                    @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
                                     <span><b>Rp {{number_format($after_discount)}}</b></span>
@@ -413,12 +417,12 @@
                                 <div class="row">
                                 <div class="col-lg-6 col-md-6 col-13">
                                     <div class="list-image overlay">
-                                        @php 
+                                        @php
                                             $photo=explode(',',$product->photo);
                                             // dd($photo);
                                         @endphp
                                         <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                        <a href="{{route('product-detail',$product->slug)}}"s class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                        <a title="Product detail" href="{{route('product-detail',$product->slug)}}"s class="buy"><i class="fa fa-shopping-bag"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
@@ -451,20 +455,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-12 padding-right">
                         <div class="image">
-                            @php 
+                            @php
                                 $photo=explode(',',$data->photo);
                                 // dd($photo);
                             @endphp
                             <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                        </div>	
-                    </div>	
+                        </div>
+                    </div>
                     <div class="col-lg-6 col-12 padding-left">
                         <div class="content">
                             <div class="heading-block">
                                 <p class="small-title">Deal of day</p>
                                 <h3 class="title">{{$data->title}}</h3>
                                 <p class="text">{!! html_entity_decode($data->summary) !!}</p>
-                                @php 
+                                @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                 @endphp
                                 <h1 class="price">${{number_format($after_discount)}} <s>${{number_format($data->price)}}</s></h1>
@@ -472,8 +476,8 @@
                                     <div class="clearfix" data-countdown="2021/02/30"></div>
                                 </div>
                             </div>
-                        </div>	
-                    </div>	
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -507,7 +511,7 @@
                     </div>
                 @endforeach
             @endif
-            
+
         </div>
     </div>
 </section>
@@ -575,17 +579,19 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <!-- Product Slider -->
                                         <div class="product-gallery">
-                                            <div class="quickview-slider-active">
-                                                @php 
+                                            {{-- <div class="quickview-slider-active"> --}}
+                                                @php
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp
-                                                @foreach($photo as $data)
+                                                {{-- @foreach($photo as $data)
                                                     <div class="single-slider">
                                                         <img src="{{$data}}" alt="{{$data}}">
                                                     </div>
-                                                @endforeach
-                                            </div>
+                                                @endforeach --}}
+                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+												{{-- <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}"> --}}
+                                            {{-- </div> --}}
                                         </div>
                                     <!-- End Product slider -->
                                 </div>
@@ -609,7 +615,7 @@
                                                     @for($i=1; $i<=5; $i++)
                                                         @if($rate>=$i)
                                                             <i class="yellow fa fa-star"></i>
-                                                        @else 
+                                                        @else
                                                         <i class="fa fa-star"></i>
                                                         @endif
                                                     @endfor
@@ -619,7 +625,7 @@
                                             <div class="quickview-stock">
                                                 @if($product->stock >0)
                                                 <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
-                                                @else 
+                                                @else
                                                 <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
                                                 @endif
                                             </div>
@@ -637,7 +643,7 @@
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select>
-                                                            @php 
+                                                            @php
                                                             $sizes=explode(',',$product->size);
                                                             // dd($sizes);
                                                             @endphp
@@ -659,7 +665,7 @@
                                             </div>
                                         @endif --}}
                                         <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
-                                        @csrf 
+                                        @csrf
                                         @if($product->size)
                                         <div class="form-group">
                                             <div class="size">
@@ -667,6 +673,7 @@
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                            <option value="" selected="selected">--Select Size--</option>
                                                             @php
                                                             $sizes =explode(',',$product->size);
                                                             // dd($sizes ?? '');
@@ -826,14 +833,14 @@
                     else{
                         swal('error',response.msg,'error').then(function(){
 							// document.location.href=document.location.href;
-						}); 
+						});
                     }
                 }
             });
         });
     </script> --}}
     <script>
-        
+
         /*==================================================================
         [ Isotope ]*/
         var $topeContainer = $('.isotope-grid');
@@ -845,7 +852,7 @@
                 var filterValue = $(this).attr('data-filter');
                 $topeContainer.isotope({filter: filterValue});
             });
-            
+
         });
 
         // init Isotope
@@ -902,7 +909,7 @@
             }
             return false
         }
-        
+
         // Change one button color
         function setButtonColor(btn, color) {
         btn.css({'background': color});

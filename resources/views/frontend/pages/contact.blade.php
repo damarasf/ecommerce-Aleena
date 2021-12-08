@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title','Aleena Byand Store - Contact Us')
+
 @section('main-content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -108,7 +110,7 @@
 	<!-- Map Section -->
 	<div class="map-section">
 		<div id="myMap">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14130.857353934944!2d85.36529494999999!3d27.6952226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sne!2snp!4v1595323330171!5m2!1sne!2snp" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8393651113056!2d107.03365931488204!3d-6.284835995451187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698e2384287b7d%3A0xd0d323dd43026599!2sJl.%20Perumahan%20Griya%20Persada%20Elok%20Blok%20B%20No.27%2C%20RT.001%2FRW.012%2C%20Mustika%20Jaya%2C%20Kec.%20Mustika%20Jaya%2C%20Kota%20Bks%2C%20Jawa%20Barat%2017158!5e0!3m2!1sen!2sid!4v1638960903899!5m2!1sen!2sid" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 		</div>
 	</div>
 	<!--/ End Map Section -->

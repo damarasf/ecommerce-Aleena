@@ -24,7 +24,7 @@
 
         <tr class="@if($message->read_at) border-left-success @else bg-light border-left-warning @endif">
           <td scope="row">{{$loop->index +1}}</td>
-          <td>{{$message->name}} {{$message->read_at}}</td>
+          <td>{{$message->name}} <i>- (seen {{$message->read_at}})</i></td>
           <td>{{$message->subject}}</td>
           <td>{{$message->created_at->format('F d, Y H:i')}}</td>
           <td>

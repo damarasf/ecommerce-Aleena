@@ -95,7 +95,7 @@ class CartController extends Controller
                 $cart->quantity = $request->quant[1];
                 $cart->size = $request->size;
 
-                $cart->amount = ($product->price * $request->quant[1]);
+                $cart->amount = ($cart->price * $request->quant[1]);
                 if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error', 'Stock not sufficient!.');
                 // return $cart;
 
@@ -118,7 +118,7 @@ class CartController extends Controller
             $cart->quantity = $request->quant[1];
             $cart->size = $request->size;
 
-            $cart->amount = ($product->price * $request->quant[1]);
+            $cart->amount = ($cart->price * $request->quant[1]);
             if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error', 'Stock not sufficient!.');
             // return $cart;
 
@@ -283,6 +283,11 @@ class CartController extends Controller
         //     $cart->fill($data);
         //     $cart->save();
         // }
+        if(empty(Cart::where('user_id',auth()->user()->id)->where('order_id',null)->first())){
+            request()->session()->flash('error','Cart is Empty !');
+            return back();
+        }
+        
         return view('frontend.pages.checkout');
     }
 }

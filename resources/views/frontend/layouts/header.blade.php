@@ -108,7 +108,7 @@
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>{{count(Helper::getAllProductFromWishlist())}} Items</span>
-                                        <a href="{{route('wishlist')}}">View Wishlist</a>
+                                        {{-- <a href="{{route('wishlist')}}">View Wishlist</a> --}}
                                     </div>
                                     <ul class="shopping-list">
                                         {{-- {{Helper::getAllProductFromCart()}} --}}
@@ -129,7 +129,7 @@
                                             <span>Total</span>
                                             <span class="total-amount">Rp {{number_format(Helper::totalWishlistPrice())}}</span>
                                         </div>
-                                        <a href="{{route('cart')}}" class="btn animate">Cart</a>
+                                        <a href="{{route('wishlist')}}" class="btn animate">View Wishlist</a>
                                     </div>
                                 </div>
                             @endauth
@@ -145,7 +145,7 @@
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>{{count(Helper::getAllProductFromCart())}} Items</span>
-                                        <a href="{{route('cart')}}">View Cart</a>
+                                        {{-- <a href="{{route('cart')}}">View Cart</a> --}}
                                     </div>
                                     <ul class="shopping-list">
                                         {{-- {{Helper::getAllProductFromCart()}} --}}
@@ -166,7 +166,8 @@
                                             <span>Total</span>
                                             <span class="total-amount">Rp {{number_format(Helper::totalCartPrice())}}</span>
                                         </div>
-                                        <a href="{{route('checkout')}}" class="btn animate">Checkout</a>
+                                        {{-- <a href="{{route('c')}}" class="btn animate">Checkout</a> --}}
+                                        <a href="{{route('cart')}}" class="btn animate">View Cart</a>
                                     </div>
                                 </div>
                             @endauth

@@ -88,7 +88,6 @@
 										<tr>
 											<td class="text-center">
 												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
-
 											</td>
 										</tr>
 								@endif

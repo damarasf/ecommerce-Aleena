@@ -125,7 +125,7 @@ class CartController extends Controller
 
             $cart->save();
         }
-
+        session()->forget('coupon');
         request()->session()->flash('success', 'Product successfully added to cart.');
         return back();
     }
@@ -135,6 +135,7 @@ class CartController extends Controller
         $cart = Cart::find($request->id);
         if ($cart) {
             $cart->delete();
+            session()->forget('coupon');
             request()->session()->flash('success', 'Cart successfully removed');
             return back();
         }
@@ -169,6 +170,7 @@ class CartController extends Controller
                     $after_price = ($cart->product->price - ($cart->product->price * $cart->product->discount) / 100);
                     $cart->amount = $after_price * $quant;
                     // return $cart->price;
+                    session()->forget('coupon');
                     $cart->save();
                     $success = 'Cart successfully updated!';
                 } else {

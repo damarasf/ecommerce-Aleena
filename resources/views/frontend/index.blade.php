@@ -580,7 +580,7 @@
                                     <!-- Product Slider -->
                                         <div class="product-gallery">
                                             {{-- <div class="quickview-slider-active"> --}}
-                                                @php
+                                                @php 
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp

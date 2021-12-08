@@ -288,7 +288,7 @@
                                         <!-- Product Slider -->
                                             <div class="product-gallery">
                                                 {{-- <div class="quickview-slider-active"> --}}
-                                                    @php
+                                                    @php 
                                                         $photo=explode(',',$product->photo);
                                                     // dd($photo);
                                                     @endphp
@@ -382,7 +382,7 @@
                                                 </div>
                                             </div> --}}
                                             <form action="{{route('single-add-to-cart')}}" method="POST">
-                                                @csrf
+                                                @csrf 
                                                 @if($product->size)
                                                 <div class="form-group">
                                                     <div class="size">

@@ -1140,23 +1140,23 @@ object {
     }
 }
 .modal-dialog .modal-content .modal-header .close {
-    color: #fff;
-    cursor: pointer;
-    opacity: 1;
-    padding: 0;
-    margin: 10px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-shadow: none;
-    font-size: 11px;
-    background: transparent;
-    color: #f7941d;
-    border-radius: 100%;
-    border: 1px solid #eee;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+	color: #fff;
+	cursor: pointer;
+	opacity: 1;
+	padding: 0;
+	margin: 10px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-shadow: none;
+	font-size: 11px;
+	background: transparent;
+	color: #F7941D;
+	border-radius: 100%;
+	border: 1px solid #eee;
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	transition:all 0.4s ease;
 }
 @media only screen and (max-width: 767px) {
     .modal-dialog .modal-content .modal-header .close {
@@ -1330,16 +1330,16 @@ object {
     border-radius: 0px;
     width: 100%;
 }
-.quickview-content .nice-select .list li.focus {
-    font-weight: 400;
-    text-transform: capitalize;
+.quickview-content .nice-select .list li.focus{
+	font-weight:400;
+	text-transform:capitalize;
 }
 .quickview-content .nice-select .list li {
-    color: #666;
-    border-radius: 0px;
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: capitalize;
+	color: #666;
+	border-radius: 0px;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform:capitalize;
 }
 .quickview-content .nice-select .list li:hover {
     background: #f7941d;

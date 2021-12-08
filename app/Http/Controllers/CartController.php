@@ -87,9 +87,6 @@ class CartController extends Controller
 
 
         if ($already_cart) {
-            $already_cart->quantity = $already_cart->quantity + $request->quant[1];
-            // $already_cart->price = ($product->price * $request->quant[1]) + $already_cart->price ;
-            $already_cart->amount = ($product->price * $request->quant[1]) + $already_cart->amount;
             if ($already_cart->size != $request->size) {
                 $cart = new Cart;
                 $cart->user_id = auth()->user()->id;
@@ -104,10 +101,14 @@ class CartController extends Controller
 
 
                 $cart->save();
-            }
-            if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error', 'Stock not sufficient!.');
+            } else {
+                $already_cart->quantity = $already_cart->quantity + $request->quant[1];
+                // $already_cart->price = ($product->price * $request->quant[1]) + $already_cart->price ;
+                $already_cart->amount = ($product->price * $request->quant[1]) + $already_cart->amount;
+                if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error', 'Stock not sufficient!.');
 
-            $already_cart->save();
+                $already_cart->save();
+            }
         } else {
 
             $cart = new Cart;

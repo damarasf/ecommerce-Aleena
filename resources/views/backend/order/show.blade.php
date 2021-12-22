@@ -139,6 +139,53 @@
               </table>
             </div>
           </div>
+
+          <div class="col-lg-6 col-lx-4">
+            <div class="order-item">
+              <h4 class="text-center pb-4">ORDER ITEM</h4>
+              <table class="table">
+                    <tr class="">
+                        <td>Order Number</td>
+                        <td> : {{$order->order_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order Date</td>
+                        <td> : {{$order->created_at->format('D d M, Y')}} at {{$order->created_at->format('H : i')}} </td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td> : {{$order->quantity}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order Status</td>
+                        <td> : {{$order->status}}</td>
+                    </tr>
+                    <tr>
+                      @php
+                          $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
+                      @endphp
+                        <td>Shipping Charge</td>
+                        <td> : Rp {{number_format($shipping_charge[0])}}</td>
+                    </tr>
+                    <tr>
+                      <td>Coupon</td>
+                      <td> : Rp {{number_format($order->coupon)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Amount</td>
+                        <td> : Rp {{number_format($order->total_amount)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Method</td>
+                        <td> : @if($order->payment_method=='cod') Cash on Delivery @else Paypal @endif</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Status</td>
+                        <td> : {{$order->payment_status}}</td>
+                    </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -150,11 +197,12 @@
 
 @push('styles')
 <style>
-    .order-info,.shipping-info{
+    .order-info,.shipping-info,.order-item{
         background:#ECECEC;
-        padding:20px;
+        padding: 25px;
+        margin-bottom: 20px;
     }
-    .order-info h4,.shipping-info h4{
+    .order-info h4,.shipping-info h4,.order-item h4{
         text-decoration: underline;
     }
 

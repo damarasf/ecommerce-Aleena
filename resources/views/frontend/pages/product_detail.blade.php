@@ -103,12 +103,12 @@
 											</div> --}}
 											<!--/ End Color -->
 											<!-- Size -->
-											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
+											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4" onsubmit="return validasi()">
 											@csrf
 											@if($product_detail->size)
 												<div class="size mt-4">
 													<h4>Size</h4>
-													<select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+													<select name="size" class="form-control selectpicker"  multiple data-live-search="true" id="tes123" >
 														<option value="" selected="selected">--Select Size--</option>
 														@php
 														$sizes =explode(',',$product_detail->size);
@@ -609,6 +609,30 @@
             })
         });
     </script> --}}
+
+    <script>
+    function validasi () {
+        submitOK = "true";
+        var x = document.getElementById("tes123").value;
+        if (x === "") {
+            swal("Failed Add to cart", "Please Choose Size", "error")
+            submitOK = "false";
+        }
+        else {
+            submitOK = "true";
+            return true;
+        }
+
+        if (submitOK == "false") {
+            return false;
+        }
+    }
+
+    function val() {
+    d = document.getElementById("tes123").value;
+    alert(d);
+    }
+    </script>
 
 @endpush
 

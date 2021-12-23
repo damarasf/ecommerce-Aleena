@@ -108,7 +108,7 @@
 											@if($product_detail->size)
 												<div class="size mt-4">
 													<h4>Size</h4>
-													<select name="size" class="form-control selectpicker"  multiple data-live-search="true" id="tes123" >
+													<select name="size" class="form-control selectpicker"  multiple data-live-search="true" id="valsize" >
 														<option value="" selected="selected">--Select Size--</option>
 														@php
 														$sizes =explode(',',$product_detail->size);
@@ -613,8 +613,8 @@
     <script>
     function validasi () {
         submitOK = "true";
-        var x = document.getElementById("tes123").value;
-        if (x === "") {
+        var size = document.getElementById("valsize").value;
+        if (size === "") {
             swal("Failed Add to cart", "Please Choose Size", "error")
             submitOK = "false";
         }
@@ -628,12 +628,8 @@
         }
     }
 
-    function val() {
-    d = document.getElementById("tes123").value;
-    alert(d);
-    }
+
     </script>
 
 @endpush
 
-{{-- coba neh --}}

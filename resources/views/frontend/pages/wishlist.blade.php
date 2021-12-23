@@ -188,7 +188,7 @@
                                             <p>{!! html_entity_decode($wishlist->product['summary']) !!}</p>
                                         </div>
 
-                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
+                                        <form action="{{route('single-add-to-cart')}}" method="POST" onsubmit="return validasi()" class="mt-4">
 
                                             @csrf
                                             @if($wishlist->product['size'])
@@ -197,7 +197,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
-                                                        <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
+                                                        <select name="size" class="form-control selectpicker" id="valsize"  multiple data-live-search="true">
                                                         <option value="" selected="selected">--Select Size--</option>
                                                             @php
                                                             $sizes =explode(',',$wishlist->product['size']);
@@ -242,7 +242,6 @@
                                             </div>
                                             <div class="add-to-cart">
                                                 <button type="submit" class="btn">Add to cart</button>
-                                                <a href="{{route('add-to-wishlist',$wishlist->product['slug'])}}" class="btn min"><i class="ti-heart"></i></a>
                                             </div>
                                         </form>
                                         {{-- <div class="default-social">
@@ -263,4 +262,22 @@
 @endsection
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script>
+    function validasi () {
+        submitOK = "true";
+        var size = document.getElementById("valsize").value;
+        if (size === "") {
+            swal("Failed Add to cart", "Please Choose Size", "error")
+            submitOK = "false";
+        }
+        else {
+            submitOK = "true";
+            return true;
+        }
+
+        if (submitOK == "false") {
+            return false;
+        }
+    }
+</script>
 @endpush

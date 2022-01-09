@@ -672,7 +672,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
-                                                        <select name="size" class="form-control selectpicker" id="valsize"  multiple data-live-search="true">
+                                                        <select name="size" class="form-control selectpicker" id="valsize" multiple data-live-search="true">
                                                             <option value="" selected="selected">--Select Size--</option>
                                                             @php
                                                             $sizes =explode(',',$product->size);
@@ -952,7 +952,7 @@
 
         function validasi () {
         submitOK = "true";
-        var size = document.getElementById("valsize").value;
+        var size = document.getElementByName("size").value;
         if (size === "") {
             swal("Failed Add to cart", "Please Choose Size", "error")
             submitOK = "false";

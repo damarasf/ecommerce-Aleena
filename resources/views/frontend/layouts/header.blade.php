@@ -21,7 +21,7 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                        <li><i class="ti-location-pin"></i> <a href="{{route('order.track')}}">Track Order</a></li>
+                        <li><i class="ti-location-pin"></i> <a href="https://cekresi.com/">Track Order</a></li>
                             {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
                             @auth
                                 @if(Auth::user()->role=='admin')
@@ -30,7 +30,7 @@
                                     <li><i class="ti-user"></i> <a href="{{route('user')}}"  target="_blank">Dashboard</a></li>
                                 @endif
                                 <li><i class="ti-power-off"></i> <a href="{{route('user.logout')}}">Logout</a></li>
-                                
+
                             @else
                                 <li><i class="ti-power-off"></i><a href="{{route('login.form')}}">Login /</a> <a href="{{route('register.form')}}">Register</a></li>
                             @endauth

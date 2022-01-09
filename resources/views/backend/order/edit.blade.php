@@ -18,6 +18,13 @@
           <option value="delivered" {{(($order->status=='delivered')? 'selected' : '')}}>Delivered</option>
           <option value="cancel" {{(($order->status=='cancel')? 'selected' : '')}}>Cancel</option>
         </select>
+
+        <label for="status">Payment Status :</label>
+        <select name="payment_status" id="" class="form-control">
+          <option value="">--Select Status--</option>
+          <option value="paid" {{(($order->payment_status=='paid')? 'selected' : '')}}>Paid</option>
+          <option value="unpaid" {{(($order->payment_status=='unpaid')? 'selected' : '')}}>Unpaid</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>

@@ -20,13 +20,13 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-            
+
     <!-- Start Checkout -->
     <section class="shop checkout section">
         <div class="container">
                 <form class="form" method="POST" action="{{route('cart.order')}}">
                     @csrf
-                    <div class="row"> 
+                    <div class="row">
 
                         <div class="col-lg-8 col-12">
                             <div class="checkout-form">
@@ -349,7 +349,58 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
+
+
+
+					<!-- Shopping Summery -->
+					<table class="table shopping-summery">
+						<thead>
+							<tr class="main-hading">
+								<th>PRODUCT</th>
+								<th>NAME</th>
+                                <th class="text-center">SIZE</th>
+								<th class="text-center">UNIT PRICE</th>
+								<th class="text-center">QUANTITY</th>
+								<th class="text-center">TOTAL</th>
+							</tr>
+						</thead>
+						<tbody id="cart_item_list">
+							<form action="{{route('cart.update')}}" method="POST">
+								@csrf
+								@if(Helper::getAllProductFromCart())
+									@foreach(Helper::getAllProductFromCart() as $key=>$cart)
+										<tr>
+											@php
+											$photo=explode(',',$cart->product['photo']);
+											@endphp
+											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+											<td class="product-des" data-title="Description">
+												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
+												<p class="product-des">{!!($cart['summary']) !!}</p>
+											</td>
+                                            <td class="size text-center" data-title="size">{{ $cart->size}}</td>
+											<td class="price" data-title="Price"><span>Rp {{number_format($cart['price'])}}</span></td>
+                                            <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
+
+											<td class="total-amount cart_single_price" data-title="Total"><span class="money">Rp {{number_format($cart['amount'])}}</span></td>
+										</tr>
+									@endforeach
+								@else
+										<tr>
+											<td class="text-center">
+												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
+											</td>
+										</tr>
+								@endif
+
+							</form>
+						</tbody>
+					</table>
+					<!--/ End Shopping Summery -->
+
+
+
                                 </div>
                                 <!--/ End Form -->
                             </div>
@@ -371,11 +422,11 @@
                                                         <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: Rp {{$shipping->price}}</option>
                                                         @endforeach
                                                     </select>
-                                                @else 
+                                                @else
                                                     <span>Free</span>
                                                 @endif
                                             </li>
-                                            
+
                                             @if(session('coupon'))
                                             <li class="coupon_price" data-price="{{session('coupon')['value']}}">You Save<span>Rp {{number_format(session('coupon')['value'])}}</span></li>
                                             @endif
@@ -402,9 +453,9 @@
                                             {{-- <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label> --}}
                                             <form-group>
                                                 <input name="payment_method"  type="radio" value="cod"> <label> Cash On Delivery</label><br>
-                                                <input name="payment_method"  type="radio" value="paypal"> <label> Transfer</label> 
+                                                <input name="payment_method"  type="radio" value="transfer"> <label> Transfer</label>
                                             </form-group>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -432,7 +483,7 @@
         </div>
     </section>
     <!--/ End Checkout -->
-    
+
     <!-- Start Shop Services Area  -->
     <section class="shop-services section home">
         <div class="container">
@@ -477,7 +528,7 @@
         </div>
     </section>
     <!-- End Shop Services -->
-    
+
     <!-- Start Shop Newsletter  -->
     <section class="shop-newsletter section">
         <div class="container">
@@ -569,8 +620,8 @@
 		$(document).ready(function(){
 			$('.shipping select[name=shipping]').change(function(){
 				let cost = parseFloat( $(this).find('option:selected').data('price') ) || 0;
-				let subtotal = parseFloat( $('.order_subtotal').data('price') ); 
-				let coupon = parseFloat( $('.coupon_price').data('price') ) || 0; 
+				let subtotal = parseFloat( $('.order_subtotal').data('price') );
+				let coupon = parseFloat( $('.coupon_price').data('price') ) || 0;
 				// alert(coupon);
 				$('#order_total_price span').text('Rp'+(subtotal + cost-coupon).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 			});

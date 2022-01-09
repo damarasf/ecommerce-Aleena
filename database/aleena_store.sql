@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 02:18 PM
+-- Generation Time: Jan 09, 2022 at 04:22 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -97,10 +97,17 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_id`, `order_id`, `user_id`, `size`, `price`, `status`, `quantity`, `amount`, `created_at`, `updated_at`) VALUES
-(12, 12, 6, 1, '', 235000.00, 'new', 20, 4700000.00, '2021-11-29 15:16:44', '2021-11-29 15:17:24'),
-(13, 15, 7, 1, 'S', 100000.00, 'new', 1, 100000.00, '2021-11-29 15:40:32', '2021-11-29 16:36:31'),
-(15, 16, 8, 1, 'M', 125000.00, 'new', 1, 125000.00, '2021-11-30 01:37:25', '2021-11-30 01:41:31'),
-(18, 14, NULL, 1, 'L', 176250.00, 'new', 2, 470000.00, '2021-12-05 10:22:11', '2021-12-05 10:22:11');
+(61, 17, 10, 1, 'L', 165000.00, 'new', 1, 165000.00, '2021-12-08 16:21:46', '2021-12-22 09:08:31'),
+(62, 16, 10, 1, 'M', 125000.00, 'new', 1, 125000.00, '2021-12-11 03:55:46', '2021-12-22 09:08:31'),
+(63, 11, 10, 1, 'M', 164500.00, 'new', 1, 164500.00, '2021-12-11 03:58:40', '2021-12-22 09:08:31'),
+(65, 16, 13, 1, 'M', 125000.00, 'new', 1, 125000.00, '2021-12-22 09:37:19', '2022-01-09 14:44:49'),
+(66, 11, 13, 1, 'M', 164500.00, 'new', 1, 164500.00, '2021-12-22 09:37:50', '2022-01-09 14:44:49'),
+(67, 13, 12, 2, 'M', 206800.00, 'new', 1, 206800.00, '2022-01-04 04:05:48', '2022-01-04 04:19:09'),
+(68, 13, 12, 2, 'XL', 206800.00, 'new', 1, 206800.00, '2022-01-04 04:05:53', '2022-01-04 04:19:09'),
+(69, 16, 12, 2, 'M', 125000.00, 'new', 1, 125000.00, '2022-01-04 04:06:23', '2022-01-04 04:19:09'),
+(70, 16, 14, 1, 'M', 125000.00, 'new', 1, 125000.00, '2022-01-09 14:45:30', '2022-01-09 14:46:45'),
+(71, 15, 14, 1, 'M', 100000.00, 'new', 1, 100000.00, '2022-01-09 14:45:38', '2022-01-09 14:46:45'),
+(72, 13, 14, 1, 'L', 206800.00, 'new', 1, 206800.00, '2022-01-09 14:46:02', '2022-01-09 14:46:45');
 
 -- --------------------------------------------------------
 
@@ -155,8 +162,8 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `status`, `created_at`, `updated_at`) VALUES
-(6, 'damaraccd', 'percent', '50', 'active', '2021-11-29 16:00:36', '2021-11-29 16:00:36'),
-(7, 'flash', 'fixed', '20000', 'active', '2021-11-29 16:58:30', '2021-11-29 16:58:30');
+(6, 'damaraccd', 'percent', '50', 'inactive', '2021-11-29 16:00:36', '2021-12-08 14:34:56'),
+(7, 'flash', 'fixed', '20000', 'inactive', '2021-11-29 16:58:30', '2021-12-08 14:35:00');
 
 -- --------------------------------------------------------
 
@@ -191,6 +198,14 @@ CREATE TABLE `messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `subject`, `email`, `photo`, `phone`, `message`, `read_at`, `created_at`, `updated_at`) VALUES
+(5, 'damara', 'Tidak Bisa Mengakses Web', 'damaraccd12@gmail.com', NULL, '081319916659', '51515161156156115656', '2021-12-08 10:33:41', '2021-12-08 10:33:20', '2021-12-08 10:33:41'),
+(6, 'damara', 'Susah', 'user@gmail.com', NULL, '081319916659', 'asfagasdfagasdasdasasdas', '2021-12-08 10:41:58', '2021-12-08 10:41:52', '2021-12-08 10:41:58');
 
 -- --------------------------------------------------------
 
@@ -253,14 +268,20 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
 ('04e3776a-e9fd-42a7-bf48-543ceebe4e60', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/6\",\"fas\":\"fa-file-alt\"}', '2021-11-29 15:26:44', '2021-11-29 15:17:24', '2021-11-29 15:26:44'),
-('1fa0eaf0-c780-479e-8dd5-e8fff763d47f', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/7\",\"fas\":\"fa-file-alt\"}', NULL, '2021-11-29 16:36:31', '2021-11-29 16:36:31'),
+('1fa0eaf0-c780-479e-8dd5-e8fff763d47f', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/7\",\"fas\":\"fa-file-alt\"}', '2021-12-08 10:26:22', '2021-11-29 16:36:31', '2021-12-08 10:26:22'),
 ('33a886a0-9472-4b41-a056-465ab0cf3c61', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-green\",\"fas\":\"fa-star\"}', '2021-11-29 15:26:47', '2021-11-29 15:05:55', '2021-11-29 15:26:47'),
+('381f5bdb-6dbf-428b-acd0-5050bf4cd3b2', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/14\",\"fas\":\"fa-file-alt\"}', NULL, '2022-01-09 14:46:45', '2022-01-09 14:46:45'),
 ('6a6224cb-9a18-4679-afad-1854ab746266', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-yellow\",\"fas\":\"fa-star\"}', NULL, '2021-11-29 15:04:32', '2021-11-29 15:04:32'),
-('89e25494-9aac-4bca-b618-55be775af975', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-blue\",\"fas\":\"fa-star\"}', NULL, '2021-11-29 15:05:08', '2021-11-29 15:05:08'),
-('b6186a3b-d480-4929-b299-50bdc3dd88e0', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Comment created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/blog-detail\\/httpscfshopeecoidfileb8f9739784b5b2c77679e57019544a1e\",\"fas\":\"fas fa-comment\"}', NULL, '2021-11-30 01:44:03', '2021-11-30 01:44:03'),
-('ec6cfcc3-cc22-4984-b0e9-198c6362704d', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/8\",\"fas\":\"fa-file-alt\"}', NULL, '2021-11-30 01:41:31', '2021-11-30 01:41:31'),
+('89e25494-9aac-4bca-b618-55be775af975', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-blue\",\"fas\":\"fa-star\"}', '2021-12-08 11:19:12', '2021-11-29 15:05:08', '2021-12-08 11:19:12'),
+('8b48af49-98e6-44cf-ba08-ef489cb2a9a6', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/12\",\"fas\":\"fa-file-alt\"}', NULL, '2022-01-04 04:19:09', '2022-01-04 04:19:09'),
+('a140b56f-5aa6-41e6-a57e-014b55847221', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/13\",\"fas\":\"fa-file-alt\"}', NULL, '2022-01-09 14:44:49', '2022-01-09 14:44:49'),
+('aa1c96bb-c0f1-4517-98e0-dce0873c6a91', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/11\",\"fas\":\"fa-file-alt\"}', NULL, '2022-01-04 04:09:30', '2022-01-04 04:09:30'),
+('b26abbd5-bcb7-4177-9d92-0f5f5a3f180c', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/10\",\"fas\":\"fa-file-alt\"}', '2021-12-22 09:08:38', '2021-12-22 09:08:31', '2021-12-22 09:08:38'),
+('b6186a3b-d480-4929-b299-50bdc3dd88e0', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Comment created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/blog-detail\\/httpscfshopeecoidfileb8f9739784b5b2c77679e57019544a1e\",\"fas\":\"fas fa-comment\"}', '2021-12-07 10:23:41', '2021-11-30 01:44:03', '2021-12-07 10:23:41'),
+('ec6cfcc3-cc22-4984-b0e9-198c6362704d', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/8\",\"fas\":\"fa-file-alt\"}', '2021-12-07 13:36:50', '2021-11-30 01:41:31', '2021-12-07 13:36:50'),
 ('f148082f-2424-485d-8867-d83da8b6b89e', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-yellow\",\"fas\":\"fa-star\"}', NULL, '2021-11-29 15:04:06', '2021-11-29 15:04:06'),
-('f6c8d679-c302-4dba-a884-19dde062983a', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-yellow\",\"fas\":\"fa-star\"}', NULL, '2021-11-29 15:04:22', '2021-11-29 15:04:22');
+('f6c8d679-c302-4dba-a884-19dde062983a', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New Product Rating!\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/product-detail\\/farikha-yellow\",\"fas\":\"fa-star\"}', NULL, '2021-11-29 15:04:22', '2021-11-29 15:04:22'),
+('fbe1ea34-70f1-4137-9fef-ca69966af943', 'App\\Notifications\\StatusNotification', 'App\\User', 1, '{\"title\":\"New order created\",\"actionURL\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/order\\/9\",\"fas\":\"fa-file-alt\"}', '2021-12-22 09:08:42', '2021-12-08 14:35:49', '2021-12-22 09:08:42');
 
 -- --------------------------------------------------------
 
@@ -277,7 +298,7 @@ CREATE TABLE `orders` (
   `coupon` double(10,2) DEFAULT NULL,
   `total_amount` double(20,2) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `payment_method` enum('cod','paypal') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'cod',
+  `payment_method` enum('cod','transfer') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'cod',
   `payment_status` enum('paid','unpaid') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
   `status` enum('new','process','delivered','cancel') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new',
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -297,9 +318,31 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_number`, `user_id`, `sub_total`, `shipping_id`, `coupon`, `total_amount`, `quantity`, `payment_method`, `payment_status`, `status`, `first_name`, `last_name`, `email`, `phone`, `country`, `post_code`, `address1`, `address2`, `created_at`, `updated_at`) VALUES
-(6, 'ORD-0AZIWOJNQW', 1, 4700000.00, NULL, NULL, 4700000.00, 20, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-29 15:17:23', '2021-11-29 15:17:40'),
-(7, 'ORD-SCRAIZVPK7', 1, 100000.00, 7, 50000.00, 58000.00, 1, 'cod', 'unpaid', 'process', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-29 16:36:31', '2021-11-29 16:39:08'),
-(8, 'ORD-R2SHQG6CTC', 1, 125000.00, 7, 20000.00, 113000.00, 1, 'cod', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '2332', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-30 01:41:31', '2021-11-30 01:41:31');
+(7, 'ORD-SCRAIZVPK7', 1, 100000.00, 7, 50000.00, 58000.00, 1, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-29 16:36:31', '2021-12-07 13:53:50'),
+(8, 'ORD-R2SHQG6CTC', 1, 125000.00, 7, 20000.00, 113000.00, 1, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '2332', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-30 01:41:31', '2021-12-07 13:53:55'),
+(10, 'ORD-7Q1H5W3IYY', 1, 454500.00, 6, NULL, 457500.00, 3, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-12-22 09:08:30', '2021-12-22 09:09:00'),
+(12, 'ORD-PU47XDA4ZG', 2, 538600.00, 6, NULL, 541600.00, 3, 'cod', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-04 04:19:09', '2022-01-04 04:19:09'),
+(13, 'ORD-QMF3N0QVUW', 1, 289500.00, NULL, NULL, 289500.00, 2, 'transfer', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-09 14:44:48', '2022-01-09 14:44:48'),
+(14, 'ORD-DMZLH6YQZ4', 1, 431800.00, 6, NULL, 434800.00, 3, 'transfer', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-09 14:46:45', '2022-01-09 14:47:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `order_number` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(5) NOT NULL,
+  `price` double(20,2) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -447,13 +490,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `slug`, `summary`, `description`, `photo`, `stock`, `size`, `condition`, `status`, `price`, `discount`, `is_featured`, `cat_id`, `child_cat_id`, `brand_id`, `created_at`, `updated_at`) VALUES
-(11, 'Farikha - Blue', 'farikha-blue', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nLembut dan sangat nyaman untuk formal dan casual</span></p><p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Bahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Blue</span><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\"><br></span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Blue\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/04c6835c9ecd8c22f22b1773582b3b56.JPEG', 10, 'S,M,L,XL', 'new', 'active', 235000.00, 30.00, 1, 16, NULL, NULL, '2021-11-29 14:24:46', '2021-11-29 14:24:46'),
+(11, 'Farikha - Blue', 'farikha-blue', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nLembut dan sangat nyaman untuk formal dan casual</span></p><p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Bahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Blue</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Blue\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/04c6835c9ecd8c22f22b1773582b3b56.JPEG', 9, 'S,M,L,XL', 'new', 'active', 235000.00, 30.00, 1, 16, NULL, NULL, '2021-11-29 14:24:46', '2021-12-22 09:09:00'),
 (12, 'Farikha - Grey', 'farikha-grey', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Grey</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Grey\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/1e9630dcd1e38c48bd0c1c01e393592f.JPEG', 0, 'M,L', 'default', 'active', 235000.00, 0.00, 0, 16, NULL, NULL, '2021-11-29 14:38:23', '2021-11-29 15:17:40'),
 (13, 'Farikha - Green', 'farikha-green', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Green</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Green\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/cde8600005ea2e1bf649a3e4f2a6c64e.JPEG', 7, 'M,L,XL', 'default', 'active', 235000.00, 12.00, 0, 16, NULL, NULL, '2021-11-29 14:40:25', '2021-11-29 14:40:25'),
 (14, 'Farikha - Yellow', 'farikha-yellow', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Yellow</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Farikha Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrasatin\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Yellow\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/38632a7d8cee22601699b4b7ceb73364.JPEG', 15, 'L', 'hot', 'active', 235000.00, 25.00, 0, 16, NULL, NULL, '2021-11-29 14:44:31', '2021-11-29 14:44:31'),
-(15, 'Alessandra - Mustard', 'alessandra-mustard', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab Insant yang lembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Mustard\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm </span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab Insant yang lembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Mustard\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm \r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabInstant #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungBergo #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/9b5227b8735aefd49ece2a94885d8eea.JPEG', 40, 'S,M', 'default', 'active', 125000.00, 20.00, 1, 12, 18, NULL, '2021-11-29 14:46:56', '2021-11-29 14:46:56'),
-(16, 'Alessandra - Purple', 'alessandra-purple', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab instant yang lembut dan sangat nyaman untuk gaya formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Purple\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm </span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab instant yang lembut dan sangat nyaman untuk gaya formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Purple\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm \r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabInstant #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungBergo #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/0cad0686dc6df0e2cd4fd256ebcac47c.JPEG', 15, 'M', 'new', 'active', 125000.00, 0.00, 0, 12, 17, NULL, '2021-11-29 14:48:34', '2021-11-29 14:48:34'),
-(17, 'Anggrya - Navy', 'anggrya-navy', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Anggrya Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrafine\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Navy</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Anggrya Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrafine\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Navy\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/98b3861371f06f2c5c39ea456de5e7f8.JPEG', 16, 'S,M,L', 'hot', 'active', 275000.00, 40.00, 0, 13, NULL, NULL, '2021-11-29 14:50:32', '2021-11-29 14:51:10');
+(15, 'Alessandra - Mustard', 'alessandra-mustard', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab Insant yang lembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Mustard\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm </span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab Insant yang lembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Mustard\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm \r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabInstant #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungBergo #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/9b5227b8735aefd49ece2a94885d8eea.JPEG', 39, 'S,M', 'default', 'active', 125000.00, 20.00, 1, 12, 18, NULL, '2021-11-29 14:46:56', '2021-12-07 13:53:50'),
+(16, 'Alessandra - Purple', 'alessandra-purple', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab instant yang lembut dan sangat nyaman untuk gaya formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Purple\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm </span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Alessandra Series\r\nHijab instant yang lembut dan sangat nyaman untuk gaya formal dan casual \r\n\r\nBahan: Diamond Crepe\r\nWarna: Purple\r\nUkuran: \r\nPanjang depan 65cm \r\nPanjang belakang 95cm \r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabInstant #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungBergo #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/0cad0686dc6df0e2cd4fd256ebcac47c.JPEG', 13, 'M', 'new', 'active', 125000.00, 0.00, 0, 12, 17, NULL, '2021-11-29 14:48:34', '2021-12-22 09:09:00'),
+(17, 'Anggrya - Navy', 'anggrya-navy', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Anggrya Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrafine\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Navy</span><br></p>', '<p><span style=\"color: rgba(0, 0, 0, 0.8); font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, 文泉驛正黑, &quot;WenQuanYi Zen Hei&quot;, &quot;Hiragino Sans GB&quot;, &quot;儷黑 Pro&quot;, &quot;LiHei Pro&quot;, &quot;Heiti TC&quot;, 微軟正黑體, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, sans-serif; font-size: 14px; white-space: pre-wrap;\">Aleena by Andriana - Anggrya Series\r\nLembut dan sangat nyaman untuk formal dan casual \r\n\r\nBahan: Voal Ultrafine\r\nUkuran: 140 x 140 cm\r\nFinshing: Laser cut\r\nWarna: Navy\r\n\r\nCatatan: Terdapat perbedaan warna tergantung dengan resolusi/setting layar Anda. Secara general, warna asli lebih gelap daripada foto.\r\nSilahkan Chat penjual sebelum membeli.\r\n\r\n#HijabSegiEmpat #Aleena #AleenaByand #HijabMurah #HijabTrendi #KerudungSegiEmpat #HijabGaya #HijabCantik #Casual #Formal #Hijab #Kerudung #Scarf #Lebaran #MuslimWear#HijabPastel #WarnaPastel #JilbabPastel #JilbabCasual #JilbabFormal</span><br></p>', '/storage/photos/1/Product/98b3861371f06f2c5c39ea456de5e7f8.JPEG', 15, 'S,M,L', 'hot', 'active', 275000.00, 40.00, 0, 13, NULL, NULL, '2021-11-29 14:50:32', '2021-12-22 09:09:00');
 
 -- --------------------------------------------------------
 
@@ -560,8 +603,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `photo`, `role`, `provider`, `provider_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Damaraccd', 'admin@gmail.com', NULL, '$2y$10$GOGIJdzJydYJ5nAZ42iZNO3IL1fdvXoSPdUOH3Ajy5hRmi0xBmTzm', '/storage/photos/1/95389420_109035787460733_8612397842188730368_n.jpg', 'admin', NULL, NULL, 'active', 'DHth41vF9NXXFCQYnVU1c1lD2MJSzwClrT5Fm1vQwg1BJTl00N5Fm9JYszrU', NULL, '2021-11-30 01:22:54'),
-(2, 'User', 'user@gmail.com', NULL, '$2y$10$10jB2lupSfvAUfocjguzSeN95LkwgZJUM7aQBdb2Op7XzJ.BhNoHq', '/storage/photos/1/users/user2.jpg', 'user', NULL, NULL, 'active', NULL, NULL, '2020-08-15 07:30:07'),
+(1, 'Damaraccd', 'admin@gmail.com', NULL, '$2y$10$GOGIJdzJydYJ5nAZ42iZNO3IL1fdvXoSPdUOH3Ajy5hRmi0xBmTzm', '/storage/photos/1/95389420_109035787460733_8612397842188730368_n.jpg', 'admin', NULL, NULL, 'active', 'JT89zCovnwDpwhLaiRQVX3tZY4Rs8g6X25CNmR4og0t1BWPT5ULS8gno4pqE', NULL, '2021-11-30 01:22:54'),
+(2, 'User', 'user@gmail.com', NULL, '$2y$10$10jB2lupSfvAUfocjguzSeN95LkwgZJUM7aQBdb2Op7XzJ.BhNoHq', NULL, 'user', NULL, NULL, 'active', NULL, NULL, '2021-12-07 15:34:01'),
 (30, 'Damara Syaidil F', 'damaraccd11@gmail.com', NULL, '$2y$10$hHS6.q8AuZf6Zp8ZIUGTgugNjyN7KPZLk7mcgvVChmOIwrTAN5YUi', NULL, 'user', NULL, NULL, 'active', 'phdKAr0PkFR2mkF16koEwd2Yjid9f4Mv25dXjEAcsOwvt1M9LA90iugsIeU1', '2021-11-29 15:25:56', '2021-11-30 01:21:28');
 
 -- --------------------------------------------------------
@@ -587,8 +630,10 @@ CREATE TABLE `wishlists` (
 --
 
 INSERT INTO `wishlists` (`id`, `product_id`, `cart_id`, `user_id`, `price`, `quantity`, `amount`, `created_at`, `updated_at`) VALUES
-(5, 15, NULL, 1, 100000.00, 1, 100000.00, '2021-12-01 18:23:59', '2021-12-01 18:23:59'),
-(6, 13, NULL, 1, 206800.00, 1, 206800.00, '2021-12-01 18:24:22', '2021-12-01 18:24:22');
+(7, 15, NULL, 1, 100000.00, 1, 100000.00, '2021-12-08 16:22:43', '2021-12-08 16:22:43'),
+(8, 11, NULL, 1, 164500.00, 1, 164500.00, '2021-12-11 03:58:47', '2021-12-11 03:58:47'),
+(9, 16, NULL, 2, 125000.00, 1, 125000.00, '2022-01-04 04:02:00', '2022-01-04 04:02:00'),
+(10, 17, NULL, 2, 165000.00, 1, 165000.00, '2022-01-04 04:02:10', '2022-01-04 04:02:10');
 
 --
 -- Indexes for dumped tables
@@ -666,6 +711,15 @@ ALTER TABLE `orders`
   ADD UNIQUE KEY `orders_order_number_unique` (`order_number`),
   ADD KEY `orders_user_id_foreign` (`user_id`),
   ADD KEY `orders_shipping_id_foreign` (`shipping_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `orderit_product_id_foreign` (`product_id`) USING BTREE,
+  ADD UNIQUE KEY `orderit_order_number_unique` (`order_number`) USING BTREE,
+  ADD UNIQUE KEY `ordeit_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -771,7 +825,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -795,7 +849,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -807,7 +861,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -867,7 +927,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -894,6 +954,15 @@ ALTER TABLE `categories`
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_shipping_id_foreign` FOREIGN KEY (`shipping_id`) REFERENCES `shippings` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `carts` (`product_id`),
+  ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`),
+  ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `orders` (`user_id`);
 
 --
 -- Constraints for table `posts`

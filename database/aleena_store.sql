@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 04:22 PM
+-- Generation Time: Jan 09, 2022 at 04:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -334,7 +334,7 @@ INSERT INTO `orders` (`id`, `order_number`, `user_id`, `sub_total`, `shipping_id
 CREATE TABLE `order_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
-  `order_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order_id` bigint(20) UNSIGNED DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `order_number` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `size` varchar(5) NOT NULL,
@@ -719,7 +719,8 @@ ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `orderit_product_id_foreign` (`product_id`) USING BTREE,
   ADD UNIQUE KEY `orderit_order_number_unique` (`order_number`) USING BTREE,
-  ADD UNIQUE KEY `ordeit_user_id_foreign` (`user_id`);
+  ADD UNIQUE KEY `ordeit_user_id_foreign` (`user_id`),
+  ADD UNIQUE KEY `orderit_order_id_foreign` (`order_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -962,7 +963,8 @@ ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `carts` (`product_id`),
   ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`),
-  ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `orders` (`user_id`);
+  ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `orders` (`user_id`),
+  ADD CONSTRAINT `order_items_ibfk_5` FOREIGN KEY (`order_id`) REFERENCES `carts` (`order_id`);
 
 --
 -- Constraints for table `posts`

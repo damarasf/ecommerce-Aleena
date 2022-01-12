@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\OrderItem;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Shipping;
 use App\User;
 use PDF;
@@ -88,6 +90,11 @@ class OrderController extends Controller
         //         }
         // }
 
+
+
+
+
+
         $order = new Order();
         $order_data = $request->all();
         $order_data['order_number'] = 'ORD-' . strtoupper(Str::random(10));
@@ -95,6 +102,32 @@ class OrderController extends Controller
         $order_data['shipping_id'] = $request->shipping;
         $shipping = Shipping::where('id', $order_data['shipping_id'])->pluck('price');
         // return session('coupon')['value'];
+
+        $order_items = Helper::getAllProductFromCart();
+
+        // return $order_items;
+        $sub_total = 0;
+        foreach ($order_items as $cart_item) {
+            $sub_total += $cart_item['amount'];
+            $data = array(
+                'user_id' => $request->user()->id,
+                'product_id' => $cart_item['product_id'],
+                'order_id' => $order->id,
+                'quantity' => $cart_item['quantity'],
+                'size' => $cart_item['size'],
+                'amount' => $cart_item['amount'],
+                'status' => 'new',
+                'price' => $cart_item['price'],
+            );
+
+
+            OrderItem::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
+            $order_items = new OrderItem();
+            $order_items->fill($data);
+            $order_items->save();
+        }
+
+
         $order_data['sub_total'] = Helper::totalCartPrice();
         $order_data['quantity'] = Helper::cartCount();
         if (session('coupon')) {
@@ -137,6 +170,7 @@ class OrderController extends Controller
             session()->forget('cart');
             session()->forget('coupon');
             Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
+            OrderItem::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
 
             // dd($users);
             request()->session()->flash('success', 'Your product successfully placed in order');
@@ -145,6 +179,7 @@ class OrderController extends Controller
             session()->forget('cart');
             session()->forget('coupon');
             Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
+            OrderItem::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
 
             // dd($users);
             request()->session()->flash('success', 'Your product successfully placed in order');
@@ -162,8 +197,10 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         // return $order;
+
         return view('backend.order.show')->with('order', $order);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -189,7 +226,8 @@ class OrderController extends Controller
         $order = Order::find($id);
         $this->validate($request, [
             'status' => 'required|in:new,process,delivered,cancel',
-            'payment_status' => 'required|in:paid,unpaid'
+            'payment_status' => 'required|in:paid,unpaid',
+            'resi' => 'string|nullable'
         ]);
         $data = $request->all();
         // return $request->status;

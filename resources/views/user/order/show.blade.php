@@ -26,7 +26,7 @@
         <tr>
             @php
                 $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
-            @endphp 
+            @endphp
             <td>{{$order->id}}</td>
             <td>{{$order->order_number}}</td>
             <td>{{$order->first_name}} {{$order->last_name}}</td>
@@ -47,12 +47,12 @@
             </td>
             <td>
                 <form method="POST" action="{{route('order.destroy',[$order->id])}}">
-                  @csrf 
+                  @csrf
                   @method('delete')
                       <button class="btn btn-danger btn-sm dltBtn" data-id={{$order->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                 </form>
             </td>
-          
+
         </tr>
       </tbody>
     </table>
@@ -128,6 +128,14 @@
                         <td> : {{$order->country}}</td>
                     </tr>
                     <tr>
+                        <td>Receipt Number</td>
+                        @if ($order->resi != "")
+                        <td> : {{$order->resi}}</td>
+                        @else
+                        <td> : -Waiting for staff update-</td>
+                        @endif
+                    </tr>
+                    <tr>
                         <td>Post Code</td>
                         <td> : {{$order->post_code}}</td>
                     </tr>
@@ -138,6 +146,52 @@
       </div>
     </section>
     @endif
+    <table class="table shopping-summery">
+						<thead>
+                            <h4 class="text-center pb-4" style="margin-top: 40px"><u>ORDER ITEM</u></h4>
+
+							<tr class="main-hading">
+
+								<th>PRODUCT</th>
+								<th>NAME</th>
+                                <th class="text-center">SIZE</th>
+								<th class="text-center">UNIT PRICE</th>
+								<th class="text-center">QUANTITY</th>
+								<th class="text-center">TOTAL</th>
+							</tr>
+						</thead>
+						<tbody id="cart_item_list">
+							<form action="{{route('cart.update')}}" method="POST">
+								@csrf
+								@if(Helper::getAllProductFromOrderItemUser())
+									@foreach(Helper::getAllProductFromOrderItemUser() as $key=>$cart)
+										<tr>
+											@php
+											$photo=explode(',',$cart->product['photo']);
+											@endphp
+											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+											<td class="product-des" data-title="Description">
+												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
+												<p class="product-des">{!!($cart['summary']) !!}</p>
+											</td>
+                                            <td class="size text-center" data-title="size">{{ $cart->size}}</td>
+											<td class="price" data-title="Price"><span>Rp {{number_format($cart['price'])}}</span></td>
+                                            <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
+
+											<td class="total-amount cart_single_price" data-title="Total"><span class="money">Rp {{number_format($cart['amount'])}}</span></td>
+										</tr>
+									@endforeach
+								@else
+										<tr>
+											<td class="text-center">
+												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
+											</td>
+										</tr>
+								@endif
+
+							</form>
+						</tbody>
+					</table>
 
   </div>
 </div>

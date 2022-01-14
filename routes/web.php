@@ -166,7 +166,10 @@ Route::group(['prefix' => '/user', 'middleware' => ['user']], function () {
     Route::post('/profile/{id}', 'HomeController@profileUpdate')->name('user-profile-update');
     //  Order
     Route::get('/order', "HomeController@orderIndex")->name('user.order.index');
-    Route::get('/order/show/{id}', "HomeController@orderShow")->name('user.order.show');
+    // Route::get('/order/show/{id}', "HomeController@orderShow")->name('user.order.show');
+    Route::get('/order/show/{id}', "HomeController@orderShow", function ($id) {
+        return $id;
+    })->name('user.order.show');
     Route::delete('/order/delete/{id}', 'HomeController@userOrderDelete')->name('user.order.delete');
     // Product Review
     Route::get('/user-review', 'HomeController@productReviewIndex')->name('user.productreview.index');

@@ -18,7 +18,9 @@
           <option value="delivered" {{(($order->status=='delivered')? 'selected' : '')}}>Delivered</option>
           <option value="cancel" {{(($order->status=='cancel')? 'selected' : '')}}>Cancel</option>
         </select>
+      </div>
 
+        <div class="form-group">
         <label for="status">Payment Status :</label>
         <select name="payment_status" id="" class="form-control">
           <option value="">--Select Status--</option>
@@ -26,6 +28,11 @@
           <option value="unpaid" {{(($order->payment_status=='unpaid')? 'selected' : '')}}>Unpaid</option>
         </select>
       </div>
+
+      <div class="form-group">
+          <label for="status">Receipt Number :</label>
+          <input id="inputResi" type="text" name="resi" placeholder="Enter resi"  value="{{$order->resi}}" class="form-control">
+        </div>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>

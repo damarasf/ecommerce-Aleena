@@ -150,7 +150,7 @@
     <table class="table shopping-summery">
 						<thead>
             <h4 class="text-center pb-4" style="margin-top: 40px"><u>ORDER ITEM</u></h4>
-							<tr class="main-hading">
+            <tr style="background-color: #858796" class="main-hading">
 								<th>PRODUCT</th>
 								<th>NAME</th>
                 <th class="text-center">SIZE</th>

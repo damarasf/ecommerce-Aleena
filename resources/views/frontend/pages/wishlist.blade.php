@@ -198,13 +198,13 @@
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select name="size" class="form-control selectpicker" id="valsize"  multiple data-live-search="true">
-                                                        <option value="" selected="selected">--Select Size--</option>
+                                                        {{-- <option value="" selected="selected">--Select Size--</option> --}}
                                                             @php
                                                             $sizes =explode(',',$wishlist->product['size']);
                                                             // dd($sizes ?? '');
                                                             @endphp
                                                             @foreach($sizes as $size)
-                                                                <option value="{{ $size }}">{{ ucwords($size) }}</option>
+                                                                <option value="{{ $size }}" selected>{{ ucwords($size) }}</option>
                                                             @endforeach
 
                                                         </select>
@@ -261,7 +261,7 @@
 
 @endsection
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script>
     function validasi () {
         submitOK = "true";
@@ -279,5 +279,5 @@
             return false;
         }
     }
-</script>
+</script> --}}
 @endpush

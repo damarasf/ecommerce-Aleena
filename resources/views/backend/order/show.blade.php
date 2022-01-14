@@ -19,7 +19,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Quantity</th>
-            <th>Charge</th>
+            <th>Shipping Cost</th>
             <th>Total Amount</th>
             <th>Status</th>
             <th>Action</th>
@@ -85,7 +85,7 @@
                       @php
                           $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
                       @endphp
-                        <td>Shipping Charge</td>
+                        <td>Shipping Cost</td>
                         <td> : Rp {{number_format($shipping_charge[0])}}</td>
                     </tr>
                     <tr>
@@ -139,7 +139,7 @@
                         <td> : {{$order->post_code}}</td>
                     </tr>
                     <tr>
-                        <td>Receipt Number</td>
+                        <td>Receipt Number (Resi)</td>
                         <td> : {{$order->resi}}</td>
                     </tr>
               </table>
@@ -152,13 +152,11 @@
 
         <table class="table shopping-summery">
 						<thead>
-                            <h4 class="text-center pb-4"><u>ORDER ITEM</u></h4>
-
+              <h4 class="text-center pb-4" style="margin-top: 10px"><u>ORDER ITEM</u></h4>
 							<tr class="main-hading">
-
 								<th>PRODUCT</th>
 								<th>NAME</th>
-                                <th class="text-center">SIZE</th>
+                <th class="text-center">SIZE</th>
 								<th class="text-center">UNIT PRICE</th>
 								<th class="text-center">QUANTITY</th>
 								<th class="text-center">TOTAL</th>
@@ -173,14 +171,14 @@
 											@php
 											$photo=explode(',',$cart->product['photo']);
 											@endphp
-											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
-											<td class="product-des" data-title="Description">
+											<td class="image text-center" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+											<td class="product-des text-center" data-title="Description">
 												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
 												<p class="product-des">{!!($cart['summary']) !!}</p>
 											</td>
-                                            <td class="size text-center" data-title="size">{{ $cart->size}}</td>
+                      <td class="size text-center" data-title="size">{{ $cart->size}}</td>
 											<td class="price" data-title="Price"><span>Rp {{number_format($cart['price'])}}</span></td>
-                                            <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
+                      <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
 
 											<td class="total-amount cart_single_price" data-title="Total"><span class="money">Rp {{number_format($cart['amount'])}}</span></td>
 										</tr>

@@ -22,7 +22,7 @@
               <th>Name</th>
               <th>Email</th>
               <th>Quantity</th>
-              <th>Charge</th>
+              <th>Shipping Cost</th>
               <th>Total Amount</th>
               <th>Status</th>
               <th style="width: 100px">Action</th>
@@ -35,7 +35,7 @@
               <th>Name</th>
               <th>Email</th>
               <th>Quantity</th>
-              <th>Charge</th>
+              <th>Shipping Cost</th>
               <th>Total Amount</th>
               <th>Status</th>
               <th style="width: 100px">Action</th>

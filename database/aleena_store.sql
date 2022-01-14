@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 04:34 PM
+-- Generation Time: Jan 14, 2022 at 01:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -107,7 +107,8 @@ INSERT INTO `carts` (`id`, `product_id`, `order_id`, `user_id`, `size`, `price`,
 (69, 16, 12, 2, 'M', 125000.00, 'new', 1, 125000.00, '2022-01-04 04:06:23', '2022-01-04 04:19:09'),
 (70, 16, 14, 1, 'M', 125000.00, 'new', 1, 125000.00, '2022-01-09 14:45:30', '2022-01-09 14:46:45'),
 (71, 15, 14, 1, 'M', 100000.00, 'new', 1, 100000.00, '2022-01-09 14:45:38', '2022-01-09 14:46:45'),
-(72, 13, 14, 1, 'L', 206800.00, 'new', 1, 206800.00, '2022-01-09 14:46:02', '2022-01-09 14:46:45');
+(72, 13, 14, 1, 'L', 206800.00, 'new', 1, 206800.00, '2022-01-09 14:46:02', '2022-01-09 14:46:45'),
+(73, 11, NULL, 2, 'S', 164500.00, 'new', 1, 164500.00, '2022-01-14 12:04:55', '2022-01-14 12:04:55');
 
 -- --------------------------------------------------------
 
@@ -295,12 +296,13 @@ CREATE TABLE `orders` (
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `sub_total` double(20,2) NOT NULL,
   `shipping_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `coupon` double(10,2) DEFAULT NULL,
+  `coupon` double(20,2) DEFAULT NULL,
   `total_amount` double(20,2) NOT NULL,
   `quantity` int(11) NOT NULL,
   `payment_method` enum('cod','transfer') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'cod',
   `payment_status` enum('paid','unpaid') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
   `status` enum('new','process','delivered','cancel') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new',
+  `resi` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -317,13 +319,10 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `order_number`, `user_id`, `sub_total`, `shipping_id`, `coupon`, `total_amount`, `quantity`, `payment_method`, `payment_status`, `status`, `first_name`, `last_name`, `email`, `phone`, `country`, `post_code`, `address1`, `address2`, `created_at`, `updated_at`) VALUES
-(7, 'ORD-SCRAIZVPK7', 1, 100000.00, 7, 50000.00, 58000.00, 1, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-29 16:36:31', '2021-12-07 13:53:50'),
-(8, 'ORD-R2SHQG6CTC', 1, 125000.00, 7, 20000.00, 113000.00, 1, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '2332', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-11-30 01:41:31', '2021-12-07 13:53:55'),
-(10, 'ORD-7Q1H5W3IYY', 1, 454500.00, 6, NULL, 457500.00, 3, 'cod', 'unpaid', 'delivered', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2021-12-22 09:08:30', '2021-12-22 09:09:00'),
-(12, 'ORD-PU47XDA4ZG', 2, 538600.00, 6, NULL, 541600.00, 3, 'cod', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-04 04:19:09', '2022-01-04 04:19:09'),
-(13, 'ORD-QMF3N0QVUW', 1, 289500.00, NULL, NULL, 289500.00, 2, 'transfer', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-09 14:44:48', '2022-01-09 14:44:48'),
-(14, 'ORD-DMZLH6YQZ4', 1, 431800.00, 6, NULL, 434800.00, 3, 'transfer', 'unpaid', 'new', 'Damara', 'Syaidil', 'damaraccd12@gmail.com', '081319916659', 'ID', '14105', 'Griya Persada Elok Blok B no 27', 'gpe', '2022-01-09 14:46:45', '2022-01-09 14:47:29');
+INSERT INTO `orders` (`id`, `order_number`, `user_id`, `sub_total`, `shipping_id`, `coupon`, `total_amount`, `quantity`, `payment_method`, `payment_status`, `status`, `resi`, `first_name`, `last_name`, `email`, `phone`, `country`, `post_code`, `address1`, `address2`, `created_at`, `updated_at`) VALUES
+(56, 'ORD-1UP33MXNSU', 1, 250000.00, 5, NULL, 270000.00, 1, 'cod', 'unpaid', 'new', NULL, 'Herdi', 'Yusli', 'yusliherdi@gmail.com', '08158887661', 'ID', '17520', 'Perum Alam Pesona Wanajaya Blok P59 no 4', NULL, '2022-01-12 05:10:18', '2022-01-12 05:10:18'),
+(57, 'ORD-SYYJRXKYZ3', 2, 2000000.00, 5, NULL, 2020000.00, 2, 'cod', 'paid', 'process', 'resi user', 'xcsdfdsfs', 'fdsfdsfsd', 'user@gmail.com', '34243242342', 'ID', '145623', 'jakarta', NULL, '2022-01-12 05:11:53', '2022-01-12 05:13:27'),
+(58, 'ORD-KQYM1D4ZUF', 2, 587500.00, 5, NULL, 607500.00, 5, 'cod', 'unpaid', 'new', NULL, 'heheh', 'hehehe', 'admin@gmail.com', '5454545', 'ID', '145623', 'jakarta', NULL, '2022-01-12 05:34:35', '2022-01-12 05:34:35');
 
 -- --------------------------------------------------------
 
@@ -333,16 +332,26 @@ INSERT INTO `orders` (`id`, `order_number`, `user_id`, `sub_total`, `shipping_id
 
 CREATE TABLE `order_items` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED DEFAULT NULL,
   `order_id` bigint(20) UNSIGNED DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `order_number` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(5) NOT NULL,
+  `size` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(20,2) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `status` enum('new','progress','delivered','cancel') CHARACTER SET utf8mb4 NOT NULL,
+  `quantity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double(20,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `product_id`, `order_id`, `user_id`, `size`, `price`, `status`, `quantity`, `amount`, `created_at`, `updated_at`) VALUES
+(165, 17, 56, 1, 'XL', 250000.00, 'new', '1', 250000.00, '2022-01-12 05:10:18', '2022-01-12 05:10:18'),
+(166, 16, 57, 2, 'M', 1000000.00, 'new', '2', 2000000.00, '2022-01-12 05:11:53', '2022-01-12 05:11:53'),
+(167, 15, 58, 2, 'M', 117500.00, 'new', '5', 587500.00, '2022-01-12 05:34:34', '2022-01-12 05:34:37');
 
 -- --------------------------------------------------------
 
@@ -603,7 +612,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `photo`, `role`, `provider`, `provider_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Damaraccd', 'admin@gmail.com', NULL, '$2y$10$GOGIJdzJydYJ5nAZ42iZNO3IL1fdvXoSPdUOH3Ajy5hRmi0xBmTzm', '/storage/photos/1/95389420_109035787460733_8612397842188730368_n.jpg', 'admin', NULL, NULL, 'active', 'JT89zCovnwDpwhLaiRQVX3tZY4Rs8g6X25CNmR4og0t1BWPT5ULS8gno4pqE', NULL, '2021-11-30 01:22:54'),
+(1, 'Damaraccd', 'admin@gmail.com', NULL, '$2y$10$GOGIJdzJydYJ5nAZ42iZNO3IL1fdvXoSPdUOH3Ajy5hRmi0xBmTzm', '/storage/photos/1/95389420_109035787460733_8612397842188730368_n.jpg', 'admin', NULL, NULL, 'active', 'pOpIvnEI68htAN4M94BQkSYghaW6zdHzd9asMoyo23OdY6LFlWzYt0QYHnWK', NULL, '2021-11-30 01:22:54'),
 (2, 'User', 'user@gmail.com', NULL, '$2y$10$10jB2lupSfvAUfocjguzSeN95LkwgZJUM7aQBdb2Op7XzJ.BhNoHq', NULL, 'user', NULL, NULL, 'active', NULL, NULL, '2021-12-07 15:34:01'),
 (30, 'Damara Syaidil F', 'damaraccd11@gmail.com', NULL, '$2y$10$hHS6.q8AuZf6Zp8ZIUGTgugNjyN7KPZLk7mcgvVChmOIwrTAN5YUi', NULL, 'user', NULL, NULL, 'active', 'phdKAr0PkFR2mkF16koEwd2Yjid9f4Mv25dXjEAcsOwvt1M9LA90iugsIeU1', '2021-11-29 15:25:56', '2021-11-30 01:21:28');
 
@@ -717,10 +726,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `orderit_product_id_foreign` (`product_id`) USING BTREE,
-  ADD UNIQUE KEY `orderit_order_number_unique` (`order_number`) USING BTREE,
-  ADD UNIQUE KEY `ordeit_user_id_foreign` (`user_id`),
-  ADD UNIQUE KEY `orderit_order_id_foreign` (`order_id`);
+  ADD KEY `order_items_order_id_foreign` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -826,7 +833,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -862,13 +869,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -960,11 +967,8 @@ ALTER TABLE `orders`
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `carts` (`product_id`),
-  ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`),
-  ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `orders` (`user_id`),
-  ADD CONSTRAINT `order_items_ibfk_5` FOREIGN KEY (`order_id`) REFERENCES `carts` (`order_id`);
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `posts`

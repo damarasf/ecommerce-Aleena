@@ -3,7 +3,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <a href="https://github.com/damarasf" target="_blank">PT. Dirilis</a> 2022</span>
+            <span>Copyright © {{date('Y')}} <a href="https://github.com/damarasf" target="_blank">PT. Dirilis</a></span>
           </div>
         </div>
       </footer>

@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-group">
-          <label for="status">Receipt Number :</label>
+          <label for="status">Receipt Number (Resi) :</label>
           <input id="inputResi" type="text" name="resi" placeholder="Enter resi"  value="{{$order->resi}}" class="form-control">
         </div>
       <button type="submit" class="btn btn-primary">Update</button>

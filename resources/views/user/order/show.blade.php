@@ -16,7 +16,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Quantity</th>
-            <th>Charge</th>
+            <th>Shipping Cost</th>
             <th>Total Amount</th>
             <th>Status</th>
             <th>Action</th>
@@ -32,8 +32,8 @@
             <td>{{$order->first_name}} {{$order->last_name}}</td>
             <td>{{$order->email}}</td>
             <td>{{$order->quantity}}</td>
-            <td>@foreach($shipping_charge as $data) $ {{number_format($data,2)}} @endforeach</td>
-            <td>${{number_format($order->total_amount,2)}}</td>
+            <td>@foreach($shipping_charge as $data) Rp {{number_format($data)}} @endforeach</td>
+            <td>Rp {{number_format($order->total_amount)}}</td>
             <td>
                 @if($order->status=='new')
                   <span class="badge badge-primary">{{$order->status}}</span>
@@ -84,16 +84,16 @@
                       @php
                           $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
                       @endphp
-                        <td>Shipping Charge</td>
-                        <td> : $ {{number_format($shipping_charge[0],2)}}</td>
+                        <td>Shipping Cost</td>
+                        <td> : Rp {{number_format($shipping_charge[0],2)}}</td>
                     </tr>
                     <tr>
                         <td>Total Amount</td>
-                        <td> : $ {{number_format($order->total_amount,2)}}</td>
+                        <td> : Rp {{number_format($order->total_amount,2)}}</td>
                     </tr>
                     <tr>
                       <td>Payment Method</td>
-                      <td> : @if($order->payment_method=='cod') Cash on Delivery @else Paypal @endif</td>
+                      <td> : @if($order->payment_method=='cod') Cash on Delivery @else Transfer @endif</td>
                     </tr>
                     <tr>
                         <td>Payment Status</td>
@@ -128,11 +128,11 @@
                         <td> : {{$order->country}}</td>
                     </tr>
                     <tr>
-                        <td>Receipt Number</td>
+                        <td>Receipt Number (Resi)</td>
                         @if ($order->resi != "")
                         <td> : {{$order->resi}}</td>
                         @else
-                        <td> : -Waiting for staff update-</td>
+                        <td> : Waiting for resi update..</td>
                         @endif
                     </tr>
                     <tr>
@@ -146,15 +146,14 @@
       </div>
     </section>
     @endif
+    
     <table class="table shopping-summery">
 						<thead>
-                            <h4 class="text-center pb-4" style="margin-top: 40px"><u>ORDER ITEM</u></h4>
-
+            <h4 class="text-center pb-4" style="margin-top: 40px"><u>ORDER ITEM</u></h4>
 							<tr class="main-hading">
-
 								<th>PRODUCT</th>
 								<th>NAME</th>
-                                <th class="text-center">SIZE</th>
+                <th class="text-center">SIZE</th>
 								<th class="text-center">UNIT PRICE</th>
 								<th class="text-center">QUANTITY</th>
 								<th class="text-center">TOTAL</th>
@@ -169,14 +168,14 @@
 											@php
 											$photo=explode(',',$cart->product['photo']);
 											@endphp
-											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
-											<td class="product-des" data-title="Description">
+											<td class="image text-center" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+											<td class="product-des text-center" data-title="Description">
 												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
 												<p class="product-des">{!!($cart['summary']) !!}</p>
 											</td>
-                                            <td class="size text-center" data-title="size">{{ $cart->size}}</td>
+                      <td class="size text-center" data-title="size">{{ $cart->size}}</td>
 											<td class="price" data-title="Price"><span>Rp {{number_format($cart['price'])}}</span></td>
-                                            <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
+                      <td class="qty text-center" data-title="Qty">{{ $cart->quantity}}</td>
 
 											<td class="total-amount cart_single_price" data-title="Total"><span class="money">Rp {{number_format($cart['amount'])}}</span></td>
 										</tr>

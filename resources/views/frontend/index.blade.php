@@ -633,7 +633,11 @@
                                         @php
                                             $after_discount=($product->price-($product->price*$product->discount)/100);
                                         @endphp
-                                        <h3>Rp {{number_format($after_discount)}}&ensp;<small><del class="text-muted">Rp {{number_format($product->price)}}</del></small></h3>
+                                        <h3>Rp {{number_format($after_discount)}}&ensp; 
+                                            @if($product->discount>0) 
+                                            <small><del class="text-muted">Rp {{number_format($product->price)}}</del></small>
+                                            @endif
+                                        </h3>
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>

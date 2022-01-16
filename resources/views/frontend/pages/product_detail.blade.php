@@ -103,7 +103,7 @@
 											</div> --}}
 											<!--/ End Color -->
 											<!-- Size -->
-											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4" onsubmit="return validasi()">
+											<form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
 											@csrf
 											@if($product_detail->size)
 												<div class="size mt-4">

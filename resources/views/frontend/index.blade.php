@@ -633,8 +633,8 @@
                                         @php
                                             $after_discount=($product->price-($product->price*$product->discount)/100);
                                         @endphp
-                                        <h3>Rp {{number_format($after_discount)}}&ensp; 
-                                            @if($product->discount>0) 
+                                        <h3>Rp {{number_format($after_discount)}}&ensp;
+                                            @if($product->discount>0)
                                             <small><del class="text-muted">Rp {{number_format($product->price)}}</del></small>
                                             @endif
                                         </h3>
@@ -668,7 +668,7 @@
                                                 </div>
                                             </div>
                                         @endif --}}
-                                        <form action="{{route('single-add-to-cart')}}" method="POST" onsubmit="return validasi()"class="mt-4">
+                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
                                         @csrf
                                         @if($product->size)
                                         <div class="form-group">

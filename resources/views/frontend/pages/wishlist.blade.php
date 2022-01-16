@@ -182,8 +182,8 @@
                                         @php
                                             $after_discount=($wishlist->product['price']-($wishlist->product['price']*$wishlist->product['discount'])/100);
                                         @endphp
-                                        <h3>Rp {{number_format($after_discount)}}&ensp; 
-                                            @if($wishlist->product['discount']>0) 
+                                        <h3>Rp {{number_format($after_discount)}}&ensp;
+                                            @if($wishlist->product['discount']>0)
                                             <small><del class="text-muted">Rp {{number_format($wishlist->product['price'])}}</del></small>
                                             @endif
                                         </h3>
@@ -192,7 +192,7 @@
                                             <p>{!! html_entity_decode($wishlist->product['summary']) !!}</p>
                                         </div>
 
-                                        <form action="{{route('single-add-to-cart')}}" method="POST" onsubmit="return validasi()" class="mt-4">
+                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
 
                                             @csrf
                                             @if($wishlist->product['size'])

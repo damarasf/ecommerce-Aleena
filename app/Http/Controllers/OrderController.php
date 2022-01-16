@@ -174,7 +174,7 @@ class OrderController extends Controller
 
             // dd($users);
             request()->session()->flash('success', 'Your product successfully placed in order');
-            return view('frontend.pages.confirm-order');
+            return view('frontend.pages.confirm-order')->with('orders', $order);
         } else {
             session()->forget('cart');
             session()->forget('coupon');

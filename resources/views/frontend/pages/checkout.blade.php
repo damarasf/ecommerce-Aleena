@@ -108,12 +108,9 @@
                                         </div>
                                     </div>
 
-
-
-
                     <!-- Shopping Summery -->
-                    <h5 style="margin-top: 20px">Your Order Items</h5>
-					<table class="table shopping-summery order-details">
+                    <h5 style="margin-top: 20px; margin-bottom: 20px">Your Order Items</h5>
+					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
 								<th>PRODUCT</th>
@@ -176,7 +173,7 @@
                                                 Shipping Cost
                                                 @if(count(Helper::shipping())>0 && Helper::cartCount()>0)
                                                     <select name="shipping" class="nice-select">
-                                                        <option value="">Select your shipping</option>
+                                                        {{-- <option value="">Select your shipping</option> --}}
                                                         @foreach(Helper::shipping() as $shipping)
                                                         <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: Rp {{$shipping->price}}</option>
                                                         @endforeach

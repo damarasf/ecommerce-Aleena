@@ -3,7 +3,7 @@
 @section('title','Aleena Byand Store - Payment')
 
 @section('main-content')
-<div class="container">
+<div style="margin-top: 5%; margin-bottom: 5%" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -23,7 +23,7 @@
                             <label class="col-md-8 col-form-label">{{ __('BCA - No Rekening 112321321 Atas Nama Herdi Yusli') }}</label>
                             <label class="col-md-8 col-form-label">{{ __('BNI - No Rekening 112321321 Atas Nama Herdi Yusli') }}</label>
 
-                            <div class="col-md-8">
+                            <div style="margin-top: 20px" class="col-md-8">
                                 <button type="submit" class="btn btn-primary" onclick="location.href='https://api.whatsapp.com/send?phone=628158887661&text=Saya%20ingin%20konfirmasi%20%20untuk%20nomer%20order%20-LIHAT%20PADA%20DASHBOARD-';">
                                     {{ __('Kirim Bukti Transfer Via WhatsApp Klik Disni') }}
                                 </button>

@@ -288,7 +288,7 @@
                                         <!-- Product Slider -->
                                             <div class="product-gallery">
                                                 {{-- <div class="quickview-slider-active"> --}}
-                                                    @php 
+                                                    @php
                                                         $photo=explode(',',$product->photo);
                                                     // dd($photo);
                                                     @endphp
@@ -382,7 +382,7 @@
                                                 </div>
                                             </div> --}}
                                             <form action="{{route('single-add-to-cart')}}" method="POST">
-                                                @csrf 
+                                                @csrf
                                                 @if($product->size)
                                                 <div class="form-group">
                                                     <div class="size">
@@ -390,7 +390,7 @@
                                                             <div class="col-lg-6 col-12">
                                                                 <h5 class="title">Size</h5>
                                                                 <select name="size" class="form-control selectpicker"  multiple data-live-search="true">
-                                                                <option value="" selected="selected">--Select Size--</option>
+                                                                <option value="nill" selected="selected">--Select Size--</option>
                                                                     @php
                                                                     $sizes =explode(',',$product->size);
                                                                     // dd($sizes ?? '');

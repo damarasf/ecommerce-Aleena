@@ -109,7 +109,7 @@
 												<div class="size mt-4">
 													<h4>Size</h4>
 													<select name="size" class="form-control selectpicker"  multiple data-live-search="true" id="valsize" >
-														<option value="" selected="selected">--Select Size--</option>
+														<option value="nill" selected="selected">--Select Size--</option>
 														@php
 														$sizes =explode(',',$product_detail->size);
 														// dd($sizes ?? '');

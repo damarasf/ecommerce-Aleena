@@ -122,8 +122,8 @@
 
 
 	<!-- Modal -->
-	@if(Helper::getAllProductFromWishlist())
-    @foreach(Helper::getAllProductFromWishlist() as $key=>$wishlist)
+	@if(Helper::product())
+    @foreach(Helper::product() as $key=>$wishlist)
         <div class="modal fade" id="{{$wishlist->product['id']}}" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
                     <div class="modal-content">

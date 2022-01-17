@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>E-SHOP || Login Page</title>
+  <title>Aleena Byand Store - Login</title>
   @include('backend.layouts.head')
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
 
   <div class="container">
 
@@ -54,7 +54,7 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                    <button type="submit" class="btn btn-secondary btn-user btn-block">
                       Login
                     </button>
                   </form>

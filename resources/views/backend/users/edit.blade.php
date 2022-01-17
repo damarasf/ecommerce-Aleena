@@ -6,7 +6,7 @@
     <h5 class="card-header">Edit User</h5>
     <div class="card-body">
       <form method="post" action="{{route('users.update',$user->id)}}">
-        @csrf 
+        @csrf
         @method('PATCH')
         <div class="form-group">
           <label for="inputTitle" class="col-form-label">Name</label>
@@ -47,7 +47,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        @php 
+        @php
         $roles=DB::table('users')->select('role')->where('id',$user->id)->get();
         // dd($roles);
         @endphp
@@ -56,8 +56,8 @@
             <select name="role" class="form-control">
                 <option value="">-----Select Role-----</option>
                 @foreach($roles as $role)
-                    <option value="{{$role->role}}" {{(($role->role=='admin') ? 'selected' : '')}}>Admin</option>
-                    <option value="{{$role->role}}" {{(($role->role=='user') ? 'selected' : '')}}>User</option>
+                    <option value="admin" {{(($role->role=='admin') ? 'selected' : '')}}>Admin</option>
+                    <option value="user" {{(($role->role=='user') ? 'selected' : '')}}>User</option>
                 @endforeach
             </select>
           @error('role')

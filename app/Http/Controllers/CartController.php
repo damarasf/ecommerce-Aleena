@@ -71,6 +71,9 @@ class CartController extends Controller
 
 
         $product = Product::where('slug', $request->slug)->first();
+        if ($request->size == "nill") {
+            return back()->with('error', 'Please choose size');
+        }
         if ($product->stock < $request->quant[1]) {
             return back()->with('error', 'Out of stock, You can add other products.');
         }
@@ -285,11 +288,11 @@ class CartController extends Controller
         //     $cart->fill($data);
         //     $cart->save();
         // }
-        if(empty(Cart::where('user_id',auth()->user()->id)->where('order_id',null)->first())){
-            request()->session()->flash('error','Cart is Empty !');
+        if (empty(Cart::where('user_id', auth()->user()->id)->where('order_id', null)->first())) {
+            request()->session()->flash('error', 'Cart is Empty !');
             return back();
         }
-        
+
         return view('frontend.pages.checkout');
     }
 }

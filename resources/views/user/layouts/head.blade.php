@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Dashboard - Aleena Byand Store</title>
+    <link rel="icon" type="image/png" href="{{asset('backend/img/logo2.png')}}">
   
     <!-- Custom fonts for this template-->
     <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">

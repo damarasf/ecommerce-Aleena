@@ -24,7 +24,7 @@
                             <label class="col-md-8 col-form-label">{{ __('BNI - No Rekening 112321321 Atas Nama Herdi Yusli') }}</label>
 
                             <div style="margin-top: 20px" class="col-md-8">
-                                <button type="submit" class="btn btn-primary" onclick="location.href='https://api.whatsapp.com/send?phone=628158887661&text=Saya%20ingin%20konfirmasi%20pembayaran%20untuk%20nomer%20order%20{{$orders->order_number}}';">
+                                <button type="submit" class="btn btn-primary" onclick="location.href='https://api.whatsapp.com/send?phone=628158887661&text=Saya%20ingin%20konfirmasi%20pembayaran%20untuk%20nomer%20order%20*{{$orders->order_number}}*';">
                                     {{ __('Kirim Bukti Transfer Via WhatsApp Klik Disni') }}
                                 </button>
                             </div>

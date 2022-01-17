@@ -71,13 +71,7 @@
 </style>
   <div class="invoice-header">
     <div class="float-left site-logo">
-      <img src="{{asset('backend/img/logo.png')}}" alt="">
-    </div>
-    <div class="float-right site-address">
-      <h4>{{env('APP_NAME')}}</h4>
-      <p>{{env('APP_ADDRESS')}}</p>
-      <p>Phone: <a href="tel:{{env('APP_PHONE')}}">{{env('APP_PHONE')}}</a></p>
-      <p>Email: <a href="mailto:{{env('APP_EMAIL')}}">{{env('APP_EMAIL')}}</a></p>
+      <img src="{{asset('backend/img/logo2.png')}}" alt="">
     </div>
     <div class="clearfix"></div>
   </div>
@@ -119,7 +113,7 @@
       </thead>
       <tbody>
       @foreach($order->cart_info as $cart)
-      @php 
+      @php
         $product=DB::table('products')->select('title')->where('id',$cart->product_id)->get();
       @endphp
         <tr>
@@ -129,7 +123,7 @@
               @endforeach
             </span></td>
           <td>x{{$cart->quantity}}</td>
-          <td><span>${{number_format($cart->price,2)}}</span></td>
+          <td><span>Rp {{number_format($cart->price)}}</span></td>
         </tr>
       @endforeach
       </tbody>
@@ -137,7 +131,7 @@
         <tr>
           <th scope="col" class="empty"></th>
           <th scope="col" class="text-right">Subtotal:</th>
-          <th scope="col"> <span>${{number_format($order->sub_total,2)}}</span></th>
+          <th scope="col"> <span>Rp {{number_format($order->sub_total,2)}}</span></th>
         </tr>
       {{-- @if(!empty($order->coupon))
         <tr>
@@ -149,14 +143,14 @@
         <tr>
           <th scope="col" class="empty"></th>
           <th scope="col" class="text-right ">Shipping:</th>
-          <th><span>${{number_format($order->delivery_charge,2)}}</span></th>
+          <th><span>Rp {{number_format($order->delivery_charge,2)}}</span></th>
         </tr>
         <tr>
           <th scope="col" class="empty"></th>
           <th scope="col" class="text-right">Total:</th>
           <th>
             <span>
-                ${{number_format($order->total_amount,2)}}
+                Rp {{number_format($order->total_amount,2)}}
             </span>
           </th>
         </tr>

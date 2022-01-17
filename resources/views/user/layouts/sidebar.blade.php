@@ -46,7 +46,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Posts
+      Blog
     </div>
     <!-- Comments -->
     <li class="nav-item">

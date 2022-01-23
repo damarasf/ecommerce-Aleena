@@ -3,7 +3,7 @@ PPPL course purpose
 
 
 
-## Set up :
+## Installation :
 
 1. Clone the repo and cd into it
 2. composer install

@@ -1,9 +1,6 @@
 # Aleena Byand Store
 Tugas Project PPPL
 
-- Cara Menggunakan Git & Github = https://medium.com/@cecepahmadfauzi93/tutorial-penggunaan-git-github-791ba1472e72
-- Cara Menggunakan Git & Github(2) = https://medium.com/aisy-rozsidhy/tutorial-penggunaan-github-untuk-pemula-part-1-upload-file-ke-github-e807df4e9ecc
-- Cara Melakukan Pull Request = https://mmdiyul.medium.com/melakukan-pull-request-pada-proyek-di-github-55165036e365
 
 
 ## Set up :

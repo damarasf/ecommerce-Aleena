@@ -18,6 +18,3 @@ PPPL course purpose
 11. php artisan serve or use virtual host
 12. Visit localhost:8000 in your browser
 13. Visit /admin if you want to access the admin panel. Admin Email/Password: admin@gmail.com/1111. User Email/Password: user@gmail.com/1111
-
-<p style="text-align:center">Thank You so much for your time !!!</p>
-
